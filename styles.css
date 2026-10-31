@@ -1220,7 +1220,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: 80svh;
   display: flex;
   align-items: center;
   padding: calc(var(--header-h) + 60px) 0 70px;
