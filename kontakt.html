@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt — Prism</title>
+  <meta name="description" content="Napisz, zadzwoń albo wpadnij do salonu Prism w Rzeszowie. Odpowiadamy w 24 godziny.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='14' y='6' width='36' height='52' rx='10' fill='url(%23g)'/%3E%3Crect x='26' y='11' width='12' height='3' rx='1.5' fill='rgba(255,255,255,.85)'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300..800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="contact">
+
+  <!-- Kurtyna przejścia między podstronami -->
+  <div class="curtain" aria-hidden="true"><span>Prism</span><small>Kontakt</small></div>
+
+  <!-- Tło: gradient + pływające kule światła -->
+  <div class="bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
+
+  <!-- Filtr SVG — refrakcja ciekłego szkła (feDisplacementMap zniekształca tło pod szkłem) -->
+  <svg class="lg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#8b5cf6"/>
+        <stop offset="1" stop-color="#22d3ee"/>
+      </linearGradient>
+    </defs>
+    <filter id="liquid-lens" x="-35%" y="-35%" width="170%" height="170%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.005 0.011" numOctaves="2" seed="14" result="noise"/>
+      <feGaussianBlur in="noise" stdDeviation="2" result="soft"/>
+      <feDisplacementMap in="SourceGraphic" in2="soft" scale="110" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <!-- ===== NAGŁÓWEK ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner glass">
+      <a class="logo" href="index.html" aria-label="Prism — strona główna">
+        <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="14" y="6" width="36" height="52" rx="10" fill="url(#logo-g)"/>
+          <rect x="26" y="11" width="12" height="3" rx="1.5" fill="rgba(255,255,255,.85)"/>
+        </svg>
+        <span>Prism</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Nawigacja główna">
+        <ul>
+          <li><a href="index.html">Start<sup>01</sup></a></li>
+          <li><a href="sklep.html">Sklep<sup>02</sup></a></li>
+          <li><a href="manifest.html">Manifest<sup>03</sup></a></li>
+          <li><a href="kontakt.html" aria-current="page">Kontakt<sup>04</sup></a></li>
+        </ul>
+      </nav>
+
+      <label class="search-box" for="searchInput">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="M20 20l-3.8-3.8"/>
+        </svg>
+        <input type="search" id="searchInput" placeholder="Szukaj telefonu…" autocomplete="off" aria-label="Szukaj telefonu">
+      </label>
+
+      <button class="cart-btn" id="cartBtn" type="button" aria-label="Koszyk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 4h2l2.3 12h11.4l2-8H6"/>
+          <circle cx="9.5" cy="20" r="1.5"/>
+          <circle cx="17" cy="20" r="1.5"/>
+        </svg>
+        <span class="cart-count" id="cartCount" hidden>0</span>
+      </button>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <span class="ghost-word" aria-hidden="true" style="right:-3vw; top:16vh">Halo</span>
+      <div class="container">
+        <span class="label reveal" style="--d:.5s"><b>Kontakt</b> Odpisujemy w 24 h</span>
+        <div class="page-intro">
+          <h1 class="page-title" data-split style="--d:.45s">Porozmawiajmy<br><em>po ludzku.</em></h1>
+          <div class="reveal" style="--d:.7s">
+            <p>Pytanie o model, raty albo odkup? A może chcesz po prostu pogadać o telefonach? Napisz, zadzwoń albo wpadnij na kawę do salonu.</p>
+            <div class="status-pill glass" id="statusPill" style="margin-top:24px">
+              <span class="pulse" aria-hidden="true"></span>
+              <span id="statusText">Sprawdzamy, czy salon jest otwarty…</span>
+              <time id="statusTime"></time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="container contact-grid">
+        <form class="form-card glass reveal" id="contactForm" novalidate>
+          <h2>Napisz do nas</h2>
+          <fieldset class="topics">
+            <legend>Temat</legend>
+            <div>
+              <input type="radio" name="topic" id="topic0" value="Wybór telefonu" checked><label for="topic0">Wybór telefonu</label>
+              <input type="radio" name="topic" id="topic1" value="Raty 0%"><label for="topic1">Raty 0%</label>
+              <input type="radio" name="topic" id="topic2" value="Odkup"><label for="topic2">Odkup</label>
+              <input type="radio" name="topic" id="topic3" value="Reklamacja"><label for="topic3">Reklamacja</label>
+              <input type="radio" name="topic" id="topic4" value="Coś innego"><label for="topic4">Coś innego</label>
+            </div>
+          </fieldset>
+          <div class="field-row">
+            <div class="field"><input id="fName" name="name" type="text" placeholder=" " autocomplete="name" required><label for="fName">Imię</label></div>
+            <div class="field"><input id="fEmail" name="email" type="email" placeholder=" " autocomplete="email" required><label for="fEmail">E-mail</label></div>
+          </div>
+          <div class="field"><textarea id="fMsg" name="message" placeholder=" " required></textarea><label for="fMsg">Wiadomość</label></div>
+          <div class="form-foot">
+            <p>Odpowiadamy w dni robocze w ciągu 24 godzin. Twoje dane służą wyłącznie do odpowiedzi.</p>
+            <button class="btn btn-primary glass" type="submit">Wyślij wiadomość <span class="arrow">→</span></button>
+          </div>
+        </form>
+
+        <div class="info-stack">
+          <div class="info-card glass reveal">
+            <span class="label no-line">Salon</span>
+            <address>ul. Szklana 7<br>35-001 Rzeszów</address>
+            <div class="map" aria-hidden="true">
+              <svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice" fill="none">
+                <path d="M-10 128 C 80 110, 140 150, 230 118 S 360 70, 420 92" stroke="rgba(34,211,238,.35)" stroke-width="12" stroke-linecap="round"/>
+                <path d="M-10 40 L420 62 M60 -10 L90 180 M180 -10 L210 180 M300 -10 L280 180 M-10 96 L420 30" stroke="rgba(255,255,255,.16)" stroke-width="2"/>
+                <path d="M120 20 L380 140 M-10 150 L160 -10" stroke="rgba(255,255,255,.08)" stroke-width="1.5"/>
+                <circle cx="110" cy="70" r="26" fill="rgba(163,230,53,.12)"/>
+              </svg>
+              <span class="pin"></span>
+            </div>
+          </div>
+          <div class="info-card glass reveal" style="--d:.06s">
+            <span class="label no-line">Telefon</span>
+            <a href="tel:+48170000000">+48 17 000 00 00</a>
+            <p>Odbiera człowiek, nie automat.</p>
+          </div>
+          <div class="info-card glass reveal" style="--d:.12s">
+            <span class="label no-line">E-mail</span>
+            <a href="mailto:hej@prism.example">hej@prism.example</a>
+          </div>
+          <div class="info-card glass reveal" style="--d:.18s">
+            <span class="label no-line">Godziny</span>
+            <div class="hours">
+              <div data-day="1"><span>Poniedziałek</span><span>10–19</span></div>
+              <div data-day="2"><span>Wtorek</span><span>10–19</span></div>
+              <div data-day="3"><span>Środa</span><span>10–19</span></div>
+              <div data-day="4"><span>Czwartek</span><span>10–19</span></div>
+              <div data-day="5"><span>Piątek</span><span>10–19</span></div>
+              <div data-day="6"><span>Sobota</span><span>10–15</span></div>
+              <div data-day="0"><span>Niedziela</span><span>zamknięte</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <span class="label reveal"><b>?</b> Pytania</span>
+            <h2 class="display" data-split>Zanim <em>zapytasz.</em></h2>
+          </div>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item glass"><summary>Ile trwa dostawa?<i aria-hidden="true"></i></summary><p>Zamówienia złożone do 15:00 wysyłamy tego samego dnia. Kurier dostarcza je zwykle następnego dnia roboczego, za darmo.</p></details>
+          <details class="faq-item glass"><summary>Jak działają raty 0%?<i aria-hidden="true"></i></summary><p>Rozkładasz płatność nawet na 20 rat. Nie płacisz odsetek ani prowizji: suma rat to dokładnie cena telefonu. Decyzja zapada online w kilka minut.</p></details>
+          <details class="faq-item glass"><summary>Ile dostanę za stary telefon?<i aria-hidden="true"></i></summary><p>Wycena zależy od modelu i stanu. Wpadnij do salonu albo wyślij nam zdjęcia, a ofertę dostaniesz w dziesięć minut. Kwotę odejmiemy od ceny nowego telefonu.</p></details>
+          <details class="faq-item glass"><summary>Czy mogę zwrócić telefon?<i aria-hidden="true"></i></summary><p>Tak, masz 30 dni na zwrot bez podawania przyczyny. Wystarczy, że telefon nie będzie uszkodzony.</p></details>
+          <details class="faq-item glass"><summary>Czy telefony są oryginalne?<i aria-hidden="true"></i></summary><p>Wyłącznie. Kupujemy bezpośrednio od polskich dystrybutorów, a każdy telefon ma gwarancję producenta.</p></details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== STOPKA ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="logo" href="index.html">
+            <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="14" y="6" width="36" height="52" rx="10" fill="url(#logo-g)"/>
+              <rect x="26" y="11" width="12" height="3" rx="1.5" fill="rgba(255,255,255,.85)"/>
+            </svg>
+            <span>Prism</span>
+          </a>
+          <p>Mała pracownia z Rzeszowa. Sześć starannie wybranych telefonów, dostawa w 24 godziny i ludzie, którzy odbierają telefon.</p>
+          <div class="socials">
+            <a href="#" class="glass" aria-label="Facebook">Fb</a>
+            <a href="#" class="glass" aria-label="Instagram">Ig</a>
+            <a href="#" class="glass" aria-label="X">X</a>
+            <a href="#" class="glass" aria-label="YouTube">Yt</a>
+          </div>
+        </div>
+
+        <nav class="footer-col" aria-label="Sklep">
+          <h4>Sklep</h4>
+          <ul>
+            <li><a href="sklep.html">Wszystkie modele</a></li>
+            <li><a href="sklep.html?q=apple">Apple</a></li>
+            <li><a href="sklep.html?q=samsung">Samsung</a></li>
+            <li><a href="index.html#okazja">Wyprzedaż</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Pomoc">
+          <h4>Pomoc</h4>
+          <ul>
+            <li><a href="kontakt.html#faq">Dostawa i płatności</a></li>
+            <li><a href="kontakt.html#faq">Zwroty</a></li>
+            <li><a href="manifest.html">O nas</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-col footer-news">
+          <h4>Newsletter</h4>
+          <p>Raz w miesiącu, bez spamu. Na start <strong>50 zł</strong> rabatu.</p>
+          <form class="newsletter-form" id="newsletterForm" novalidate>
+            <input type="email" id="newsletterEmail" placeholder="Twój e-mail" required aria-label="Adres e-mail">
+            <button class="btn btn-primary glass" type="submit">Zapisz się</button>
+          </form>
+          <p class="newsletter-msg" id="newsletterMsg" hidden>Dziękujemy, sprawdź skrzynkę.</p>
+        </div>
+      </div>
+
+      <p class="footer-word" aria-hidden="true">Prism</p>
+
+      <div class="footer-bottom">
+        <p>© <span class="js-year">2026</span> Prism · projekt demonstracyjny liquid glass UI</p>
+        <p>Rzeszów, PL · 50°02′N 21°59′E</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== KOSZYK ===== -->
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer glass" id="drawer" aria-hidden="true" aria-label="Koszyk">
+    <div class="drawer-head">
+      <h2>Koszyk<em id="drawerQty"></em></h2>
+      <button class="icon-btn" id="drawerClose" type="button" aria-label="Zamknij koszyk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-items" id="drawerItems"></div>
+    <div class="drawer-foot">
+      <div class="drawer-total"><span>Razem</span><strong id="drawerTotal">0 zł</strong></div>
+      <p class="drawer-note">Dostawa gratis · wysyłka w 24 h · 30 dni na zwrot</p>
+      <button class="btn btn-primary glass" id="checkoutBtn" type="button">Przejdź do kasy <span class="arrow">→</span></button>
+    </div>
+  </aside>
+
+  <div class="toast glass" id="toast" role="status" aria-live="polite"></div>
+  <div class="cursor-lens glass" id="cursorLens" aria-hidden="true"></div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

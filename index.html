@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prism — telefony, które wyprzedzają czas</title>
-  <meta name="description" content="Prism — sklep z telefonami w stylistyce liquid glass. Flagowce, bestsellery, promocje i raty 0%.">
+  <title>Prism — światło zamknięte w szkle</title>
+  <meta name="description" content="Prism — mała pracownia z Rzeszowa. Sześć starannie wybranych smartfonów, dostawa w 24 h, raty 0% i odkup starego telefonu.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='14' y='6' width='36' height='52' rx='10' fill='url(%23g)'/%3E%3Crect x='26' y='11' width='12' height='3' rx='1.5' fill='rgba(255,255,255,.85)'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300..800&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="home">
+
+  <!-- Kurtyna przejścia między podstronami -->
+  <div class="curtain" aria-hidden="true"><span>Prism</span><small>Start</small></div>
 
   <!-- Tło: gradient + pływające kule światła -->
   <div class="bg" aria-hidden="true">
@@ -20,6 +26,12 @@
 
   <!-- Filtr SVG — refrakcja ciekłego szkła (feDisplacementMap zniekształca tło pod szkłem) -->
   <svg class="lg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#8b5cf6"/>
+        <stop offset="1" stop-color="#22d3ee"/>
+      </linearGradient>
+    </defs>
     <filter id="liquid-lens" x="-35%" y="-35%" width="170%" height="170%" color-interpolation-filters="sRGB">
       <feTurbulence type="fractalNoise" baseFrequency="0.005 0.011" numOctaves="2" seed="14" result="noise"/>
       <feGaussianBlur in="noise" stdDeviation="2" result="soft"/>
@@ -30,14 +42,8 @@
   <!-- ===== NAGŁÓWEK ===== -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner glass">
-      <a class="logo" href="#start" aria-label="Prism — strona główna">
+      <a class="logo" href="index.html" aria-label="Prism — strona główna">
         <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
-          <defs>
-            <linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#8b5cf6"/>
-              <stop offset="1" stop-color="#22d3ee"/>
-            </linearGradient>
-          </defs>
           <rect x="14" y="6" width="36" height="52" rx="10" fill="url(#logo-g)"/>
           <rect x="26" y="11" width="12" height="3" rx="1.5" fill="rgba(255,255,255,.85)"/>
         </svg>
@@ -46,11 +52,10 @@
 
       <nav class="main-nav" id="mainNav" aria-label="Nawigacja główna">
         <ul>
-          <li><a href="#start">Start</a></li>
-          <li><a href="#sklep">Sklep</a></li>
-          <li><a href="#zalety">Zalety</a></li>
-          <li><a href="#promocja">Promocje</a></li>
-          <li><a href="#opinie">Opinie</a></li>
+          <li><a href="index.html" aria-current="page">Start<sup>01</sup></a></li>
+          <li><a href="sklep.html">Sklep<sup>02</sup></a></li>
+          <li><a href="manifest.html">Manifest<sup>03</sup></a></li>
+          <li><a href="kontakt.html">Kontakt<sup>04</sup></a></li>
         </ul>
       </nav>
 
@@ -79,275 +84,180 @@
 
   <main>
 
-    <!-- ===== SEKCJA 1: HERO ===== -->
+    <!-- ===== HERO ===== -->
     <section class="hero" id="start">
+      <span class="ghost-word" aria-hidden="true">Prism</span>
       <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <span class="eyebrow glass">✦ Nowość — flagowce 2026 już dostępne</span>
-          <h1>Przyszłość<br>w Twojej <span class="grad-text">dłoni</span></h1>
-          <p class="lead">
-            Najnowsze smartfony w najlepszych cenach. Darmowa dostawa w 24 godziny,
-            2 lata gwarancji i raty 0% — wszystko w jednym miejscu.
-          </p>
-          <div class="hero-cta">
-            <a class="btn btn-primary glass" href="#sklep">Przeglądaj telefony</a>
-            <a class="btn btn-ghost glass" href="#promocja">Zobacz promocje</a>
+        <div class="hero-copy">
+          <div class="hero-meta reveal" style="--d:.5s">
+            <span class="label no-line"><b>N°26</b> Kolekcja jesień</span>
+            <span class="label no-line">50°02′N · 21°59′E</span>
           </div>
-          <ul class="hero-stats">
-            <li class="glass"><strong>25 000+</strong> klientów</li>
-            <li class="glass"><strong>24 h</strong> wysyłka</li>
-            <li class="glass"><strong>4,9/5</strong> ocena sklepu</li>
-          </ul>
+          <h1 class="hero-title" data-split style="--d:.45s">Światło <em>zamknięte</em><br><span class="indent">w szkle.</span></h1>
+          <p class="hero-lead reveal" style="--d:.7s">
+            Prism to mała pracownia z Rzeszowa. Wybieramy tylko telefony, które sami chcielibyśmy
+            nosić w kieszeni, i dowozimy je w 24 godziny.
+          </p>
+          <div class="hero-cta reveal" style="--d:.8s">
+            <a class="btn btn-primary glass" href="sklep.html">Wejdź do sklepu <span class="arrow">→</span></a>
+            <a class="btn btn-ghost glass" href="manifest.html">Nasz manifest</a>
+          </div>
         </div>
 
-        <div class="hero-visual reveal" style="--d:.15s" aria-hidden="true">
-          <div class="phone-glow"></div>
-          <div class="phone-frame glass">
-            <div class="notch"></div>
-            <div class="screen">
-              <div class="screen-time" id="screenClock">9:41</div>
-              <div class="screen-date" id="screenDate">czwartek, 12 czerwca</div>
+        <div class="stage reveal" style="--d:.6s" aria-hidden="true">
+          <div class="stage-glow"></div>
+          <div id="heroPhone">
+              <div class="screen-time js-clock">9:41</div>
+              <div class="screen-date js-date">sobota, 31 października</div>
+              
               <div class="widget">
                 <span class="w-title">Rzeszów</span>
-                <span class="w-big">24°</span>
-                <span class="w-sub">Słonecznie · H: 26° N: 15°</span>
+                <span class="w-big">11°</span>
+                <span class="w-sub">Mgliście · H: 13° N: 6°</span>
               </div>
-              <div class="widget widget-music">
+              <div class="widget">
                 <span class="w-title">Teraz odtwarzane</span>
-                <span class="w-sub">Neon Dreams — Glasswave</span>
+                <span class="w-sub">Neon Dreams · Glasswave</span>
                 <span class="w-bar"><i></i></span>
               </div>
-              <div class="dock">
-                <i></i><i></i><i></i><i></i>
-              </div>
-            </div>
+              <div class="dock"><i></i><i></i><i></i><i></i></div>
           </div>
-          <span class="chip glass chip-1">120 Hz</span>
-          <span class="chip glass chip-2">AI ✦</span>
-          <span class="chip glass chip-3">5G</span>
+          <span class="chip glass chip-1"><small>01</small>120 Hz</span>
+          <span class="chip glass chip-2"><small>02</small>48 Mpx</span>
+          <span class="chip glass chip-3"><small>03</small>5G</span>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><i></i>Przewiń</div>
+    </section>
+
+    <div class="marquee glass " aria-hidden="true">
+      <div class="marquee-track"><span>Darmowa dostawa <em>24 h</em></span><i class="dot"></i><span>Raty <em>0%</em></span><i class="dot"></i><span>2 lata gwarancji</span><i class="dot"></i><span>Odkup starego telefonu</span><i class="dot"></i><span>30 dni na <em>zmianę zdania</em></span><i class="dot"></i></div>
+      <div class="marquee-track"><span>Darmowa dostawa <em>24 h</em></span><i class="dot"></i><span>Raty <em>0%</em></span><i class="dot"></i><span>2 lata gwarancji</span><i class="dot"></i><span>Odkup starego telefonu</span><i class="dot"></i><span>30 dni na <em>zmianę zdania</em></span><i class="dot"></i></div>
+    </div>
+
+    <!-- ===== KOLEKCJA: pierścień 3D ===== -->
+    <section class="collection" id="kolekcja">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <span class="label reveal"><b>01</b> Kolekcja</span>
+            <h2 class="display" data-split>Sześć telefonów.<br><em>Zero</em> przypadkowych.</h2>
+          </div>
+          <p class="reveal">Nie trzymamy na półkach setek modeli. Każdy z tych sześciu przeszedł nasz miesięczny test w prawdziwym życiu. Złap pierścień i obróć go, żeby się im przyjrzeć.</p>
+        </div>
+
+        <div class="ring-stage reveal" id="ringStage">
+          <div class="ring" id="ring"></div>
+          <span class="ring-count" id="ringCount"></span>
+        </div>
+
+        <div class="ring-ui">
+          <button class="round-btn glass" id="ringPrev" type="button" aria-label="Poprzedni model"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></button>
+          <div class="ring-info glass" id="ringInfo" aria-live="polite">
+            <div class="r-text"></div>
+            <a class="btn btn-primary glass" href="sklep.html">Zobacz <span class="arrow">→</span></a>
+          </div>
+          <button class="round-btn glass" id="ringNext" type="button" aria-label="Następny model"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
         </div>
       </div>
     </section>
 
-    <!-- ===== SEKCJA 2: BESTSELLERY / SKLEP ===== -->
-    <section class="products" id="sklep">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow glass">Bestsellery</span>
-          <h2>Najchętniej wybierane modele</h2>
-          <p>Wyszukaj po nazwie, marce lub parametrach — lista filtruje się na żywo.</p>
-          <p class="search-info" id="searchInfo">6 modeli w ofercie</p>
+    <!-- ===== DETAL: przyklejony telefon + rozdziały ===== -->
+    <section class="story" id="detal">
+      <div class="story-sticky container">
+        <span class="ghost-word" aria-hidden="true">Detal</span>
+        <div class="story-copy">
+          <span class="label"><b>02</b> W szczegółach</span>
+          <div class="chapters">
+            <div class="chapter active">
+              <span class="ch-num">01</span>
+              <h3>Ekran, który <em>oddycha.</em></h3>
+              <p>Do 120 klatek na sekundę i jasność, przy której czytasz w pełnym słońcu. Przewijanie przypomina przesuwanie kartki, a nie pikseli.</p>
+            </div>
+            <div class="chapter">
+              <span class="ch-num">02</span>
+              <h3>Aparat <em>z pamięcią.</em></h3>
+              <p>Trzy obiektywy, jeden cel: zdjęcie, które za dziesięć lat nadal wywoła to samo uczucie co w chwili, gdy je robiłeś.</p>
+            </div>
+            <div class="chapter">
+              <span class="ch-num">03</span>
+              <h3>Bateria na <em>dwa dni.</em></h3>
+              <p>Ogniwa krzemowo-węglowe i ładowanie, które od zera do pełna trwa krócej niż jeden odcinek serialu.</p>
+            </div>
+          </div>
         </div>
-
-        <div class="products-grid" id="productsGrid">
-
-          <article class="product-card glass reveal" data-search="apple iphone 16 pro 256 gb a18 6,3">
-            <span class="p-badge">Bestseller</span>
-            <div class="p-visual"><div class="p-phone" style="--screen: linear-gradient(160deg,#312e81,#7c3aed 55%,#22d3ee)"></div></div>
-            <div class="p-info">
-              <span class="p-brand">Apple</span>
-              <h3 class="p-name">iPhone 16 Pro</h3>
-              <p class="p-specs">6,3″ · A18 Pro · 256&nbsp;GB</p>
-              <div class="p-row">
-                <p class="p-price"><s>6&nbsp;499&nbsp;zł</s><strong>5&nbsp;999&nbsp;zł</strong></p>
-                <button class="add-btn glass" type="button">Do koszyka</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card glass reveal" style="--d:.05s" data-search="samsung galaxy s25 ultra 512 gb snapdragon 6,9">
-            <span class="p-badge p-badge-new">Nowość</span>
-            <div class="p-visual"><div class="p-phone" style="--screen: linear-gradient(160deg,#0f172a,#0ea5e9 60%,#a5f3fc)"></div></div>
-            <div class="p-info">
-              <span class="p-brand">Samsung</span>
-              <h3 class="p-name">Galaxy S25 Ultra</h3>
-              <p class="p-specs">6,9″ · Snapdragon 8 Elite · 512&nbsp;GB</p>
-              <div class="p-row">
-                <p class="p-price"><strong>6&nbsp;299&nbsp;zł</strong></p>
-                <button class="add-btn glass" type="button">Do koszyka</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card glass reveal" style="--d:.1s" data-search="google pixel 9 pro 256 gb tensor g4 6,3">
-            <span class="p-badge p-badge-sale">Promocja</span>
-            <div class="p-visual"><div class="p-phone" style="--screen: linear-gradient(160deg,#134e4a,#10b981 55%,#fde68a)"></div></div>
-            <div class="p-info">
-              <span class="p-brand">Google</span>
-              <h3 class="p-name">Pixel 9 Pro</h3>
-              <p class="p-specs">6,3″ · Tensor G4 · 256&nbsp;GB</p>
-              <div class="p-row">
-                <p class="p-price"><s>4&nbsp;799&nbsp;zł</s><strong>4&nbsp;399&nbsp;zł</strong></p>
-                <button class="add-btn glass" type="button">Do koszyka</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card glass reveal" style="--d:.15s" data-search="xiaomi 15 512 gb snapdragon 6,36">
-            <div class="p-visual"><div class="p-phone" style="--screen: linear-gradient(160deg,#3b0764,#d946ef 60%,#fbcfe8)"></div></div>
-            <div class="p-info">
-              <span class="p-brand">Xiaomi</span>
-              <h3 class="p-name">Xiaomi 15</h3>
-              <p class="p-specs">6,36″ · Snapdragon 8 Elite · 512&nbsp;GB</p>
-              <div class="p-row">
-                <p class="p-price"><strong>3&nbsp;799&nbsp;zł</strong></p>
-                <button class="add-btn glass" type="button">Do koszyka</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card glass reveal" style="--d:.2s" data-search="oneplus 13 256 gb snapdragon 6,82">
-            <div class="p-visual"><div class="p-phone" style="--screen: linear-gradient(160deg,#7f1d1d,#f97316 60%,#fef3c7)"></div></div>
-            <div class="p-info">
-              <span class="p-brand">OnePlus</span>
-              <h3 class="p-name">OnePlus 13</h3>
-              <p class="p-specs">6,82″ · Snapdragon 8 Elite · 256&nbsp;GB</p>
-              <div class="p-row">
-                <p class="p-price"><strong>3&nbsp;999&nbsp;zł</strong></p>
-                <button class="add-btn glass" type="button">Do koszyka</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card glass reveal" style="--d:.25s" data-search="nothing phone 3 256 gb snapdragon 6,7">
-            <span class="p-badge p-badge-sale">Hit ceny</span>
-            <div class="p-visual"><div class="p-phone" style="--screen: linear-gradient(160deg,#111827,#6b7280 55%,#e5e7eb)"></div></div>
-            <div class="p-info">
-              <span class="p-brand">Nothing</span>
-              <h3 class="p-name">Phone (3)</h3>
-              <p class="p-specs">6,7″ · Snapdragon 8s Gen 4 · 256&nbsp;GB</p>
-              <div class="p-row">
-                <p class="p-price"><strong>2&nbsp;899&nbsp;zł</strong></p>
-                <button class="add-btn glass" type="button">Do koszyka</button>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="empty-state glass" id="emptyState" hidden>
-          <p>Brak wyników dla „<span id="emptyQuery"></span>”.</p>
-          <button class="btn btn-ghost glass" id="clearSearch" type="button">Wyczyść wyszukiwanie</button>
+        <div class="story-stage" aria-hidden="true">
+          <div id="storyPhone">
+            <div class="scr scr-display on" data-ch="0"><span>Odświeżanie · Hz</span><strong>120</strong></div>
+            <div class="scr scr-camera" data-ch="1"><i class="grid"></i><i class="shutter"></i></div>
+            <div class="scr scr-power" data-ch="2"><div class="battery"><i></i></div><span>Ładowanie 100 W</span><strong id="batteryLabel">20%</strong></div>
+          </div>
+          <div class="story-progress"><i></i><i></i><i></i></div>
         </div>
       </div>
     </section>
 
-    <!-- ===== SEKCJA 3: ZALETY ===== -->
-    <section class="features" id="zalety">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow glass">Dlaczego Prism</span>
-          <h2>Kupuj bez kompromisów</h2>
+    <!-- ===== OKAZJA ===== -->
+    <section class="deal" id="okazja">
+      <span class="deal-num" aria-hidden="true">−40%</span>
+      <div class="container deal-grid">
+        <div class="deal-copy">
+          <span class="label reveal"><b>03</b> Okazja</span>
+          <h2 class="display" data-split>Jesienna<br>wyprzedaż <em>flagowców.</em></h2>
+          <p class="reveal">Najniższe ceny sezonu na wybrane modele premium. Bez gwiazdek i drobnego druku: po prostu taniej, dopóki zegar nie stanie.</p>
+          <a class="btn btn-primary glass reveal" href="sklep.html">Złap okazję <span class="arrow">→</span></a>
         </div>
-        <div class="features-grid">
-
-          <div class="feature-tile glass reveal">
-            <span class="f-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3z"/><path d="M14 10h3.4L21 13.4V15h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>
-            </span>
-            <h3>Darmowa dostawa 24 h</h3>
-            <p>Zamów do 15:00, a telefon będzie u Ciebie następnego dnia roboczego.</p>
-          </div>
-
-          <div class="feature-tile glass reveal" style="--d:.05s">
-            <span class="f-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.6-3 7.6-7 9-4-1.4-7-4.4-7-9V6l7-3z"/><path d="M9 11.5l2 2 4-4"/></svg>
-            </span>
-            <h3>2 lata gwarancji</h3>
-            <p>Pełna gwarancja producenta plus 30 dni na zwrot bez podawania przyczyny.</p>
-          </div>
-
-          <div class="feature-tile glass reveal" style="--d:.1s">
-            <span class="f-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M19 5L5 19"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
-            </span>
-            <h3>Raty 0%</h3>
-            <p>Rozłóż zakup nawet na 20 rat bez żadnych dodatkowych kosztów.</p>
-          </div>
-
-          <div class="feature-tile glass reveal" style="--d:.15s">
-            <span class="f-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 9A8 8 0 0118.6 7"/><path d="M19.5 15A8 8 0 015.4 17"/><path d="M18.5 2.5V7H14"/><path d="M5.5 21.5V17H10"/></svg>
-            </span>
-            <h3>Odkup starego telefonu</h3>
-            <p>Oddaj poprzedni model i obniż cenę nowego nawet o 1500 zł.</p>
-          </div>
-
+        <div class="countdown reveal" role="timer" aria-label="Czas do końca promocji">
+          <div class="time-box glass"><span class="t-num" id="cd-days">00</span><span class="t-label">dni</span></div>
+          <div class="time-box glass"><span class="t-num" id="cd-hours">00</span><span class="t-label">godz.</span></div>
+          <div class="time-box glass"><span class="t-num" id="cd-mins">00</span><span class="t-label">min</span></div>
+          <div class="time-box glass"><span class="t-num" id="cd-secs">00</span><span class="t-label">sek.</span></div>
         </div>
       </div>
     </section>
 
-    <!-- ===== SEKCJA 4: PROMOCJA + ODLICZANIE ===== -->
-    <section class="promo" id="promocja">
+    <!-- ===== GŁOSY ===== -->
+    <section class="voices" id="glosy">
       <div class="container">
-        <div class="promo-banner glass reveal">
-          <div class="promo-blob" aria-hidden="true"></div>
-          <div class="promo-copy">
-            <span class="eyebrow glass">Letnia wyprzedaż</span>
-            <h2>Flagowce do <span class="grad-text">−40%</span></h2>
-            <p>Tylko przez ograniczony czas: najniższe ceny sezonu na wybrane modele premium. Oferta kończy się za:</p>
-            <div class="countdown" aria-live="polite">
-              <div class="time-box glass"><span class="t-num" id="cd-days">00</span><span class="t-label">dni</span></div>
-              <div class="time-box glass"><span class="t-num" id="cd-hours">00</span><span class="t-label">godz.</span></div>
-              <div class="time-box glass"><span class="t-num" id="cd-mins">00</span><span class="t-label">min</span></div>
-              <div class="time-box glass"><span class="t-num" id="cd-secs">00</span><span class="t-label">sek.</span></div>
+        <span class="label reveal"><b>04</b> Głosy</span>
+        <div class="voice-wrap">
+          <div class="voice-mark" aria-hidden="true">„</div>
+          <div>
+            <div class="voice-list">
+              <figure class="voice active">
+                <blockquote>Zamówiłam wieczorem, kurier był przed południem. Telefon pachniał jeszcze fabryką, a cena była najlepsza w kraju.</blockquote>
+                <figcaption><strong>Marta K.</strong><span>KRAKÓW · GALAXY S25 ULTRA</span></figcaption>
+              </figure>
+              <figure class="voice">
+                <blockquote>Oddałem stary telefon w rozliczeniu. Wycena uczciwa, wszystko trwało dziesięć minut i kawę.</blockquote>
+                <figcaption><strong>Tomasz W.</strong><span>RZESZÓW · PIXEL 9 PRO</span></figcaption>
+              </figure>
+              <figure class="voice">
+                <blockquote>Raty zero procent naprawdę bez haczyków. Pomogli mi nawet przenieść zdjęcia z ośmiu lat.</blockquote>
+                <figcaption><strong>Aleksandra P.</strong><span>WARSZAWA · IPHONE 16 PRO</span></figcaption>
+              </figure>
             </div>
-            <a class="btn btn-primary glass" href="#sklep">Złap okazję</a>
-          </div>
-          <div class="promo-visual" aria-hidden="true">
-            <div class="p-phone p-phone-big" style="--screen: linear-gradient(160deg,#1e1b4b,#8b5cf6 50%,#f0abfc)"></div>
-            <span class="promo-tag glass">−40%</span>
+            <div class="voice-nav">
+              <button class="round-btn glass" id="voicePrev" type="button" aria-label="Poprzednia opinia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></button>
+              <button class="round-btn glass" id="voiceNext" type="button" aria-label="Następna opinia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+              <span class="count" id="voiceCount">01 / 03</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== SEKCJA 5: OPINIE ===== -->
-    <section class="reviews" id="opinie">
+    <div class="marquee glass tilt-right reverse" aria-hidden="true">
+      <div class="marquee-track"><span>Apple</span><i class="dot"></i><span><em>Samsung</em></span><i class="dot"></i><span>Google</span><i class="dot"></i><span><em>Xiaomi</em></span><i class="dot"></i><span>OnePlus</span><i class="dot"></i><span><em>Nothing</em></span><i class="dot"></i></div>
+      <div class="marquee-track"><span>Apple</span><i class="dot"></i><span><em>Samsung</em></span><i class="dot"></i><span>Google</span><i class="dot"></i><span><em>Xiaomi</em></span><i class="dot"></i><span>OnePlus</span><i class="dot"></i><span><em>Nothing</em></span><i class="dot"></i></div>
+    </div>
+
+    <!-- ===== FINAŁ ===== -->
+    <section class="finale">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow glass">Opinie</span>
-          <h2>Klienci o Prism</h2>
-        </div>
-        <div class="reviews-grid">
-
-          <figure class="review-card glass reveal">
-            <div class="stars" aria-label="5 z 5 gwiazdek">
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-            </div>
-            <blockquote>Zamówiłam wieczorem, kurier był następnego dnia przed południem. Telefon oryginalnie zapakowany, cena najlepsza w Polsce.</blockquote>
-            <figcaption><span class="avatar" style="--av: linear-gradient(135deg,#8b5cf6,#ec4899)">MK</span><span><strong>Marta K.</strong><em>Kraków</em></span></figcaption>
-          </figure>
-
-          <figure class="review-card glass reveal" style="--d:.08s">
-            <div class="stars" aria-label="5 z 5 gwiazdek">
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-            </div>
-            <blockquote>Skorzystałem z odkupu starego telefonu — wycena uczciwa, a cała formalność zajęła 10 minut. Polecam każdemu.</blockquote>
-            <figcaption><span class="avatar" style="--av: linear-gradient(135deg,#0ea5e9,#22d3ee)">TW</span><span><strong>Tomasz W.</strong><em>Rzeszów</em></span></figcaption>
-          </figure>
-
-          <figure class="review-card glass reveal" style="--d:.16s">
-            <div class="stars" aria-label="5 z 5 gwiazdek">
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 2l2.95 6.32 6.9.6-5.22 4.55 1.55 6.74L12 16.98 5.82 20.21l1.55-6.74L2.15 8.92l6.9-.6L12 2z"/></svg>
-            </div>
-            <blockquote>Raty 0% naprawdę bez haczyków. Obsługa pomogła dobrać model i przenieść dane ze starego telefonu. Pełen profesjonalizm.</blockquote>
-            <figcaption><span class="avatar" style="--av: linear-gradient(135deg,#10b981,#a3e635)">AP</span><span><strong>Aleksandra P.</strong><em>Warszawa</em></span></figcaption>
-          </figure>
-
-        </div>
+        <span class="label no-line reveal">Koniec przewijania</span>
+        <h2 class="display" data-split>Twój następny telefon<br>już <em>czeka</em> na półce.</h2>
+        <a class="btn btn-primary btn-lg glass reveal" href="sklep.html">Otwórz sklep <span class="arrow">→</span></a>
       </div>
     </section>
 
@@ -358,14 +268,14 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-about">
-          <a class="logo" href="#start">
+          <a class="logo" href="index.html">
             <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
               <rect x="14" y="6" width="36" height="52" rx="10" fill="url(#logo-g)"/>
               <rect x="26" y="11" width="12" height="3" rx="1.5" fill="rgba(255,255,255,.85)"/>
             </svg>
             <span>Prism</span>
           </a>
-          <p>Sklep z telefonami nowej generacji. Oryginalne urządzenia, ekspresowa dostawa i obsługa, którą polubisz.</p>
+          <p>Mała pracownia z Rzeszowa. Sześć starannie wybranych telefonów, dostawa w 24 godziny i ludzie, którzy odbierają telefon.</p>
           <div class="socials">
             <a href="#" class="glass" aria-label="Facebook">Fb</a>
             <a href="#" class="glass" aria-label="Instagram">Ig</a>
@@ -377,43 +287,64 @@
         <nav class="footer-col" aria-label="Sklep">
           <h4>Sklep</h4>
           <ul>
-            <li><a href="#sklep">Smartfony</a></li>
-            <li><a href="#sklep">Akcesoria</a></li>
-            <li><a href="#promocja">Outlet</a></li>
-            <li><a href="#zalety">Raty 0%</a></li>
+            <li><a href="sklep.html">Wszystkie modele</a></li>
+            <li><a href="sklep.html?q=apple">Apple</a></li>
+            <li><a href="sklep.html?q=samsung">Samsung</a></li>
+            <li><a href="index.html#okazja">Wyprzedaż</a></li>
           </ul>
         </nav>
 
         <nav class="footer-col" aria-label="Pomoc">
           <h4>Pomoc</h4>
           <ul>
-            <li><a href="#zalety">Dostawa i płatności</a></li>
-            <li><a href="#zalety">Zwroty i reklamacje</a></li>
-            <li><a href="#zalety">Gwarancja</a></li>
-            <li><a href="#opinie">Kontakt</a></li>
+            <li><a href="kontakt.html#faq">Dostawa i płatności</a></li>
+            <li><a href="kontakt.html#faq">Zwroty</a></li>
+            <li><a href="manifest.html">O nas</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
           </ul>
         </nav>
 
         <div class="footer-col footer-news">
           <h4>Newsletter</h4>
-          <p>Zapisz się i odbierz <strong>50 zł</strong> na pierwsze zakupy.</p>
+          <p>Raz w miesiącu, bez spamu. Na start <strong>50 zł</strong> rabatu.</p>
           <form class="newsletter-form" id="newsletterForm" novalidate>
             <input type="email" id="newsletterEmail" placeholder="Twój e-mail" required aria-label="Adres e-mail">
             <button class="btn btn-primary glass" type="submit">Zapisz się</button>
           </form>
-          <p class="newsletter-msg" id="newsletterMsg" hidden>Dziękujemy! Sprawdź skrzynkę ✦</p>
+          <p class="newsletter-msg" id="newsletterMsg" hidden>Dziękujemy, sprawdź skrzynkę.</p>
         </div>
       </div>
 
+      <p class="footer-word" aria-hidden="true">Prism</p>
+
       <div class="footer-bottom">
-        <p>© <span id="year">2026</span> Prism. Projekt demonstracyjny — liquid glass UI.</p>
-        <p>Polska 🇵🇱 · PLN</p>
+        <p>© <span class="js-year">2026</span> Prism · projekt demonstracyjny liquid glass UI</p>
+        <p>Rzeszów, PL · 50°02′N 21°59′E</p>
       </div>
     </div>
   </footer>
 
-  <div class="toast glass" id="toast" role="status" aria-live="polite"></div>
+  <!-- ===== KOSZYK ===== -->
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer glass" id="drawer" aria-hidden="true" aria-label="Koszyk">
+    <div class="drawer-head">
+      <h2>Koszyk<em id="drawerQty"></em></h2>
+      <button class="icon-btn" id="drawerClose" type="button" aria-label="Zamknij koszyk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-items" id="drawerItems"></div>
+    <div class="drawer-foot">
+      <div class="drawer-total"><span>Razem</span><strong id="drawerTotal">0 zł</strong></div>
+      <p class="drawer-note">Dostawa gratis · wysyłka w 24 h · 30 dni na zwrot</p>
+      <button class="btn btn-primary glass" id="checkoutBtn" type="button">Przejdź do kasy <span class="arrow">→</span></button>
+    </div>
+  </aside>
 
+  <div class="toast glass" id="toast" role="status" aria-live="polite"></div>
+  <div class="cursor-lens glass" id="cursorLens" aria-hidden="true"></div>
+
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
