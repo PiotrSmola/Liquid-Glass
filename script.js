@@ -1,7 +1,7 @@
 // ============================================================
-// PRISM — sklep z telefonami | interakcje
+// PRISM – sklep z telefonami | interakcje
 // Kolejność ma znaczenie: najpierw renderujemy treść z katalogu,
-// potem budujemy soczewki szkła — tak każdy element .glass
+// potem budujemy soczewki szkła – tak każdy element .glass
 // (także wygenerowany z danych) dostaje własną mapę załamań.
 // ============================================================
 
@@ -12,7 +12,7 @@
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
   // ------------------------------------------------------------
-  // Język — teksty statyczne tłumaczy i18n.js, tu komunikaty z JS
+  // Język – teksty statyczne tłumaczy i18n.js, tu komunikaty z JS
   // ------------------------------------------------------------
   const LANG = window.PRISM_LANG === "en" ? "en" : "pl";
   window.PRISM_APPLY_I18N?.();
@@ -30,7 +30,7 @@
       less: "Mniej",
       more: "Więcej",
       remove: "Usuń",
-      checkoutDemo: "Kasa w budowie — to projekt demonstracyjny",
+      checkoutDemo: "Kasa w budowie – to projekt demonstracyjny",
       checkoutEmpty: "Najpierw dodaj coś do koszyka",
       found: "Znaleziono: {n} {word}",
       inStock: "{n} {word} w ofercie",
@@ -61,7 +61,7 @@
       less: "Fewer",
       more: "More",
       remove: "Remove",
-      checkoutDemo: "Checkout under construction — this is a demo project",
+      checkoutDemo: "Checkout under construction – this is a demo project",
       checkoutEmpty: "Add something to your cart first",
       found: "Found: {n} {word}",
       inStock: "{n} {word} in stock",
@@ -118,7 +118,7 @@
   $$(".js-year").forEach((el) => (el.textContent = new Date().getFullYear()));
 
   // ------------------------------------------------------------
-  // Telefon 3D — bryła z frontu, tyłu i plastrów rantu.
+  // Telefon 3D – bryła z frontu, tyłu i plastrów rantu.
   // Dotychczasowa zawartość elementu trafia na ekran.
   // ------------------------------------------------------------
   const buildPhone = (el, { body, screen } = {}) => {
@@ -225,7 +225,7 @@
   const product = page === "product" ? findProduct(params.get("id")) || PRODUCTS[0] : null;
 
   if (product) {
-    document.title = `${product.name} — Prism`;
+    document.title = `${product.name} – Prism`;
     $("#crumbBrand").textContent = product.brand;
     $("#crumbName").textContent = product.name;
     $("#pdpBrand").textContent = product.brand;
@@ -315,7 +315,7 @@
   });
 
   // ------------------------------------------------------------
-  // Nagłówek — stan po przewinięciu, chowanie przy zjeździe
+  // Nagłówek – stan po przewinięciu, chowanie przy zjeździe
   // ------------------------------------------------------------
   const header = $("#siteHeader");
   let lastY = window.scrollY;
@@ -363,7 +363,7 @@
   };
 
   // ------------------------------------------------------------
-  // Koszyk — zapisywany w localStorage, wspólny dla podstron
+  // Koszyk – zapisywany w localStorage, wspólny dla podstron
   // ------------------------------------------------------------
   const CART_KEY = "prism-cart-v1";
   const cartCount = $("#cartCount");
@@ -386,7 +386,7 @@
     try {
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
     } catch {
-      /* tryb prywatny — koszyk działa do odświeżenia */
+      /* tryb prywatny – koszyk działa do odświeżenia */
     }
   };
 
@@ -498,7 +498,7 @@
   renderCart();
 
   // ------------------------------------------------------------
-  // Przejścia między podstronami — kurtyna
+  // Przejścia między podstronami – kurtyna
   // ------------------------------------------------------------
   const navigate = (url) => {
     if (reducedMotion) {
@@ -521,7 +521,7 @@
   });
 
   // ------------------------------------------------------------
-  // Przełącznik PL / EN — zapis wyboru i przeładowanie przez kurtynę
+  // Przełącznik PL / EN – zapis wyboru i przeładowanie przez kurtynę
   // (tłumaczenie musi zadziałać przed rozbiciem nagłówków na słowa)
   // ------------------------------------------------------------
   const langSwitch = $("#langSwitch");
@@ -538,13 +538,13 @@
     navigate(url.href);
   });
 
-  // powrót przyciskiem „wstecz” z bfcache — zdejmij kurtynę
+  // powrót przyciskiem „wstecz” z bfcache – zdejmij kurtynę
   window.addEventListener("pageshow", (e) => {
     if (e.persisted) document.documentElement.classList.remove("is-leaving");
   });
 
   // ------------------------------------------------------------
-  // Wyszukiwarka — na stronie sklepu filtruje na żywo,
+  // Wyszukiwarka – na stronie sklepu filtruje na żywo,
   // na pozostałych Enter przenosi do sklepu z zapytaniem
   // ------------------------------------------------------------
   const searchInput = $("#searchInput");
@@ -720,7 +720,7 @@
   if (cursorLens && (!finePointer || reducedMotion)) cursorLens.remove();
 
   // ------------------------------------------------------------
-  // Soczewki kropli — indywidualna mapa załamań dla każdego szkła.
+  // Soczewki kropli – indywidualna mapa załamań dla każdego szkła.
   // Kanały R/G mapy kodują wektor przesunięcia próbkowania tła:
   // środek neutralny (128), krawędzie zaginają obraz do wewnątrz
   // jak brzeg kropli wody rozlanej na ekranie.
@@ -739,7 +739,7 @@
   const makeLensMap = (w, h) => {
     const W = w + LENS_MARGIN * 2;
     const H = h + LENS_MARGIN * 2;
-    const ds = 2; // połowa rozdzielczości — szybciej, a soczewka gładsza
+    const ds = 2; // połowa rozdzielczości – szybciej, a soczewka gładsza
     const cw = Math.max(2, Math.round(W / ds));
     const ch = Math.max(2, Math.round(H / ds));
     const canvas = document.createElement("canvas");
@@ -765,7 +765,7 @@
             const gy = ny ** 3;
             const len = Math.hypot(gx, gy) || 1;
             // znak ujemny: krawędź próbkuje obraz DO WEWNĄTRZ elementu,
-            // więc nigdy nie sięga poza dostępne tło — czysty brzeg bez smug
+            // więc nigdy nie sięga poza dostępne tło – czysty brzeg bez smug
             r -= (gx / len) * t * 127;
             g -= (gy / len) * t * 127;
           }
@@ -908,7 +908,7 @@
   }
 
   // ------------------------------------------------------------
-  // Newsletter (demo — bez wysyłki)
+  // Newsletter (demo – bez wysyłki)
   // ------------------------------------------------------------
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const newsletterForm = $("#newsletterForm");
@@ -951,7 +951,7 @@
   };
 
   // ------------------------------------------------------------
-  // HERO — telefon podąża za kursorem i obraca się przy przewijaniu
+  // HERO – telefon podąża za kursorem i obraca się przy przewijaniu
   // ------------------------------------------------------------
   if (heroPhone) {
     const spin = makeSpinner(heroPhone, 0.07);
@@ -965,7 +965,7 @@
   }
 
   // ------------------------------------------------------------
-  // KOLEKCJA — pierścień 3D: przeciągnij, strzałki lub autoodtwarzanie
+  // KOLEKCJA – pierścień 3D: przeciągnij, strzałki lub autoodtwarzanie
   // ------------------------------------------------------------
   if (ring) {
     const stage = $("#ringStage");
@@ -1055,7 +1055,7 @@
   }
 
   // ------------------------------------------------------------
-  // OPOWIEŚĆ — przyklejony telefon obraca się z rozdziałami
+  // OPOWIEŚĆ – przyklejony telefon obraca się z rozdziałami
   // ------------------------------------------------------------
   if (storyPhone) {
     const story = $(".story");
@@ -1097,7 +1097,7 @@
   }
 
   // ------------------------------------------------------------
-  // GŁOSY — cytaty zmieniają się słowo po słowie
+  // GŁOSY – cytaty zmieniają się słowo po słowie
   // ------------------------------------------------------------
   const voices = $$(".voice");
   if (voices.length) {
@@ -1136,7 +1136,7 @@
   }
 
   // ------------------------------------------------------------
-  // KARTA PRODUKTU — obrót 360°, kolory, pamięć
+  // KARTA PRODUKTU – obrót 360°, kolory, pamięć
   // ------------------------------------------------------------
   if (pdpPhone && product) {
     const viewer = $("#viewer");
@@ -1230,7 +1230,7 @@
   }
 
   // ------------------------------------------------------------
-  // MANIFEST — tekst zapalany przewijaniem, liczniki, oś czasu
+  // MANIFEST – tekst zapalany przewijaniem, liczniki, oś czasu
   // ------------------------------------------------------------
   const scrub = $("[data-scrub]");
   if (scrub) {
@@ -1323,7 +1323,7 @@
   }
 
   // ------------------------------------------------------------
-  // KONTAKT — status salonu na żywo, formularz
+  // KONTAKT – status salonu na żywo, formularz
   // ------------------------------------------------------------
   const statusPill = $("#statusPill");
   if (statusPill) {
