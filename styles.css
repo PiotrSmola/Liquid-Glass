@@ -1342,13 +1342,19 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 .collection { position: relative; padding: 120px 0 80px; }
 
 .ring-stage {
-  --R: 420px;
+  /* --R: promień pierścienia, --pw/--ph: wymiary telefonu */
+  --R: clamp(420px, 44vw, 720px);
+  --pw: 210px;
+  --ph: 420px;
   position: relative;
-  height: 470px;
+  height: 640px;
+  /* scena na pełną szerokość okna — boczne telefony nie są ucinane do kolumny treści */
+  margin-inline: calc(50% - 50vw);
+  overflow: hidden;
   display: grid;
   place-items: center;
-  perspective: 1700px;
-  perspective-origin: 50% 30%;
+  perspective: 2200px;
+  perspective-origin: 50% 25%;
   cursor: grab;
   touch-action: pan-y;
   user-select: none;
@@ -1358,8 +1364,8 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 
 .ring {
   position: relative;
-  width: 150px;
-  height: 300px;
+  width: var(--pw);
+  height: var(--ph);
   transform-style: preserve-3d;
   transform: translateZ(calc(var(--R) * -1)) rotateY(var(--a, 0deg));
 }
@@ -1374,14 +1380,15 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 }
 
 .ring-item .p-phone {
-  width: 150px;
-  height: 300px;
-  border-radius: 34px;
-  -webkit-box-reflect: below 18px linear-gradient(transparent 62%, rgba(255, 255, 255, .22));
+  width: var(--pw);
+  height: var(--ph);
+  border-radius: 44px;
+  padding: 8px;
+  -webkit-box-reflect: below 22px linear-gradient(transparent 66%, rgba(255, 255, 255, .2));
 }
 
 .ring-item .p-phone::before,
-.ring-item .p-phone::after { border-radius: 28px; }
+.ring-item .p-phone::after { inset: 8px; border-radius: 36px; }
 
 .ring-item:not(.front) { filter: saturate(.55) brightness(.7); }
 
@@ -1433,7 +1440,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 .ring-count {
   position: absolute;
   top: 10px;
-  right: 0;
+  right: max(24px, calc((100% - var(--page-w)) / 2));
   font-family: var(--serif);
   font-size: 1.4rem;
   color: var(--faint);
@@ -3028,7 +3035,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 
   .phone3d { --w: 220px; --h: 456px; --r: 40px; }
 
-  .ring-stage { --R: 260px; height: 400px; }
+  .ring-stage { --R: 250px; --pw: 150px; --ph: 300px; height: 440px; }
 
   .ring-ui { grid-template-columns: 1fr 1fr; }
   .ring-info { grid-column: 1 / -1; order: -1; }
