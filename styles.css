@@ -1989,6 +1989,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 }
 
 .products-grid {
+  --stagger: 46px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 28px;
@@ -2002,8 +2003,10 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   transition: transform .35s, box-shadow .35s;
 }
 
-.products-grid .product-card:nth-child(even) { margin-top: 46px; }
-.products-grid .product-card:nth-child(even).reveal:not(.visible) { transform: translateY(80px); }
+/* parzyste karty zsunięte w dół: translate przesuwa bez zmiany wysokości
+   (margin w siatce skracałby kartę), a większy odstęp rzędów robi im miejsce */
+.products-grid { row-gap: calc(28px + var(--stagger)); padding-bottom: var(--stagger); }
+.products-grid .product-card:nth-child(even) { translate: 0 var(--stagger); }
 
 .product-card:hover {
   --lg-tint: rgba(255, 255, 255, .06);
@@ -3088,7 +3091,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; }
 
-  .products-grid .product-card:nth-child(even) { margin-top: 0; }
+  .products-grid { --stagger: 0px; }
 
   .pane-1 { left: -6%; }
   .pane-3 { right: -10%; }
