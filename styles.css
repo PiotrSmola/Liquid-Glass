@@ -1,12 +1,12 @@
 /* ============================================================
-   PRISM — sklep z telefonami | LIQUID GLASS (styl iOS 26)
+   PRISM – sklep z telefonami | LIQUID GLASS (styl iOS 26)
    Szkło = 3 warstwy:
      ::before  → refrakcja tła (backdrop-filter + feDisplacementMap)
      ::after   → delikatny tint + świetlisty rant (rim light)
      treść     → normalny przepływ, ponad warstwami
 
    UWAGA: przodkowie elementów .glass nie mogą mieć opacity < 1,
-   filter ani mask — tworzą nowy „backdrop root” i szkło traci tło.
+   filter ani mask – tworzą nowy „backdrop root” i szkło traci tło.
    Dlatego wszystkie animacje wejścia opierają się na transform.
    ============================================================ */
 
@@ -85,7 +85,7 @@ section { scroll-margin-top: calc(var(--header-h) + 24px); }
 }
 
 /* ============================================================
-   TŁO — żywa „tapeta”: kolorowe kule + siatka punktów + ziarno
+   TŁO – żywa „tapeta”: kolorowe kule + siatka punktów + ziarno
    (im bogatsze tło, tym lepiej widać refrakcję szkła)
    ============================================================ */
 
@@ -101,7 +101,7 @@ section { scroll-margin-top: calc(var(--header-h) + 24px); }
 }
 
 .bg::after {
-  /* siatka punktów — przez soczewkę szkła pięknie faluje */
+  /* siatka punktów – przez soczewkę szkła pięknie faluje */
   content: "";
   position: absolute;
   inset: 0;
@@ -113,7 +113,7 @@ section { scroll-margin-top: calc(var(--header-h) + 24px); }
 }
 
 .bg::before {
-  /* ziarno filmowe — analogowa faktura zamiast sterylnego gradientu */
+  /* ziarno filmowe – analogowa faktura zamiast sterylnego gradientu */
   content: "";
   position: absolute;
   inset: -50%;
@@ -152,7 +152,7 @@ section { scroll-margin-top: calc(var(--header-h) + 24px); }
   to   { transform: translate(90px, 60px) scale(1.15); }
 }
 
-/* Olbrzymie konturowe słowa w tle sekcji — szkło nad nimi je załamuje */
+/* Olbrzymie konturowe słowa w tle sekcji – szkło nad nimi je załamuje */
 .ghost-word {
   position: absolute;
   z-index: -1;
@@ -168,7 +168,7 @@ section { scroll-margin-top: calc(var(--header-h) + 24px); }
 }
 
 /* ============================================================
-   LIQUID GLASS — rdzeń efektu
+   LIQUID GLASS – rdzeń efektu
    ============================================================ */
 
 .glass {
@@ -185,7 +185,7 @@ section { scroll-margin-top: calc(var(--header-h) + 24px); }
 }
 
 .glass::before {
-  /* warstwa refrakcji: bez rozmycia — tylko załamanie obrazu jak przez wodę.
+  /* warstwa refrakcji: bez rozmycia – tylko załamanie obrazu jak przez wodę.
      inset -12px daje filtrowi margines próbkowania tła poza elementem,
      a clip-path przycina wynik z powrotem do kształtu szkła.
      --lens ustawia JS: indywidualna soczewka kropli dla każdego elementu */
@@ -220,11 +220,11 @@ section { scroll-margin-top: calc(var(--header-h) + 24px); }
   transition: background .35s, box-shadow .35s;
 }
 
-/* wariant bez zniekształcenia — dla małych pigułek (lżejszy dla GPU) */
+/* wariant bez zniekształcenia – dla małych pigułek (lżejszy dla GPU) */
 .no-warp::before { filter: none; }
 
 /* ============================================================
-   KURTYNA — przejście między podstronami
+   KURTYNA – przejście między podstronami
    ============================================================ */
 
 .curtain {
@@ -284,7 +284,7 @@ html.is-leaving .curtain {
 }
 
 /* ============================================================
-   KURSOR — mała kropla szkła sunąca za wskaźnikiem
+   KURSOR – mała kropla szkła sunąca za wskaźnikiem
    ============================================================ */
 
 .cursor-lens {
@@ -306,7 +306,7 @@ html.is-leaving .curtain {
 }
 
 /* ============================================================
-   NAGŁÓWEK — szklana pastylka
+   NAGŁÓWEK – szklana pastylka
    ============================================================ */
 
 .site-header {
@@ -405,7 +405,7 @@ html.is-leaving .curtain {
 
 .main-nav.blob-on .nav-blob { opacity: 1; }
 
-/* Wyszukiwarka — czysta szybka wewnątrz pastylki */
+/* Wyszukiwarka – czysta szybka wewnątrz pastylki */
 
 .search-box {
   display: flex;
@@ -452,7 +452,7 @@ html.is-leaving .curtain {
 
 .search-box input::-webkit-search-cancel-button { -webkit-appearance: none; }
 
-/* Przełącznik języka — dwie litery, limonkowa kostka przelewa się między nimi */
+/* Przełącznik języka – dwie litery, limonkowa kostka przelewa się między nimi */
 
 .lang-switch {
   position: relative;
@@ -758,7 +758,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
    ============================================================ */
 
 /* Kształty przycisków: --lg-r przyjmuje do czterech promieni (jak border-radius),
-   a clip-path warstwy refrakcji używa tej samej wartości — szkło zawsze
+   a clip-path warstwy refrakcji używa tej samej wartości – szkło zawsze
    pokrywa się z obrysem. Domyślnie „liść”: dwa przeciwległe rogi ostre. */
 .btn {
   --lg-r: 24px 6px 24px 6px;
@@ -872,13 +872,13 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 
 .round-btn:hover { --lg-tint: rgba(255, 255, 255, .08); }
 
-/* strzałki pierścienia — pionowe kapsuły po bokach karty */
+/* strzałki pierścienia – pionowe kapsuły po bokach karty */
 .ring-ui .round-btn { width: 54px; height: 92px; }
 
-/* nawigacja cytatów — kwadraty z miękkimi rogami */
+/* nawigacja cytatów – kwadraty z miękkimi rogami */
 .voice-nav .round-btn { --lg-r: 16px; width: 56px; height: 56px; }
 
-/* etykieta sekcji: „01 — Kolekcja” */
+/* etykieta sekcji: „01 – Kolekcja” */
 .label {
   display: inline-flex;
   align-items: center;
@@ -936,7 +936,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
    ANIMACJE WEJŚCIA
    ============================================================ */
 
-/* bez animacji opacity — przezroczystość rodzica chwilowo
+/* bez animacji opacity – przezroczystość rodzica chwilowo
    wyłączałaby backdrop-filter szklanych dzieci (Chromium) */
 .reveal {
   transform: translateY(34px) scale(.985);
@@ -964,7 +964,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 .split.visible .sw-i { transform: none; }
 
 /* ============================================================
-   TAŚMA — przesuwający się pas haseł z ciekłego szkła
+   TAŚMA – przesuwający się pas haseł z ciekłego szkła
    ============================================================ */
 
 .marquee {
@@ -1012,7 +1012,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 }
 
 /* ============================================================
-   TELEFON 3D — warstwowa bryła w CSS (front, tył, rant z plastrów)
+   TELEFON 3D – warstwowa bryła w CSS (front, tył, rant z plastrów)
    ============================================================ */
 
 .phone3d {
@@ -1135,7 +1135,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   opacity: .55;
 }
 
-/* cień na „podłodze” — płaszczyzna położona pod bryłą, obraca się razem z nią */
+/* cień na „podłodze” – płaszczyzna położona pod bryłą, obraca się razem z nią */
 .ph-floor {
   position: absolute;
   left: 50%;
@@ -1148,7 +1148,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   pointer-events: none;
 }
 
-/* Zawartość ekranu — ekran blokady */
+/* Zawartość ekranu – ekran blokady */
 
 .screen-time {
   font-size: 3.4rem;
@@ -1266,7 +1266,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 }
 
 /* ============================================================
-   STRONA GŁÓWNA — HERO
+   STRONA GŁÓWNA – HERO
    ============================================================ */
 
 .hero {
@@ -1406,7 +1406,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 }
 
 /* ============================================================
-   STRONA GŁÓWNA — KARUZELA 3D (pierścień modeli)
+   STRONA GŁÓWNA – KARUZELA 3D (pierścień modeli)
    ============================================================ */
 
 .collection { position: relative; padding: 80px 0 50px; }
@@ -1418,7 +1418,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   --ph: 420px;
   position: relative;
   height: 640px;
-  /* scena na pełną szerokość okna — boczne telefony nie są ucinane do kolumny treści */
+  /* scena na pełną szerokość okna – boczne telefony nie są ucinane do kolumny treści */
   margin-inline: calc(50% - 50vw);
   overflow: hidden;
   display: grid;
@@ -1519,7 +1519,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 .ring-count b { color: var(--ink); font-weight: 400; font-size: 3rem; }
 
 /* ============================================================
-   STRONA GŁÓWNA — OPOWIEŚĆ (przyklejony telefon + rozdziały)
+   STRONA GŁÓWNA – OPOWIEŚĆ (przyklejony telefon + rozdziały)
    ============================================================ */
 
 .story { position: relative; height: 320vh; }
@@ -1710,7 +1710,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 }
 
 /* ============================================================
-   STRONA GŁÓWNA — OKAZJA (odliczanie nad olbrzymim −40%)
+   STRONA GŁÓWNA – OKAZJA (odliczanie nad olbrzymim −40%)
    ============================================================ */
 
 .deal { position: relative; padding: 100px 0; overflow: hidden; }
@@ -1774,7 +1774,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 .t-label { font-family: var(--mono); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
 
 /* ============================================================
-   STRONA GŁÓWNA — GŁOSY KLIENTÓW
+   STRONA GŁÓWNA – GŁOSY KLIENTÓW
    ============================================================ */
 
 .voices { position: relative; padding: 90px 0; }
@@ -1844,7 +1844,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 }
 
 /* ============================================================
-   CTA — finał przed stopką
+   CTA – finał przed stopką
    ============================================================ */
 
 .finale {
@@ -1856,7 +1856,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 .finale .display { max-width: 980px; margin: 22px auto 40px; }
 
 /* ============================================================
-   PODSTRONY — wspólny nagłówek strony
+   PODSTRONY – wspólny nagłówek strony
    ============================================================ */
 
 .page-hero {
@@ -2436,7 +2436,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 
 .mf-title .r { display: block; text-align: right; }
 
-/* szklana rzeźba — tafle w 3D nad typografią, każda załamuje litery pod sobą */
+/* szklana rzeźba – tafle w 3D nad typografią, każda załamuje litery pod sobą */
 .panes {
   position: absolute;
   inset: 0;
@@ -3145,7 +3145,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 }
 
 /* ============================================================
-   FALLBACK — przeglądarki bez filtrów na backdropie (Firefox/Safari):
+   FALLBACK – przeglądarki bez filtrów na backdropie (Firefox/Safari):
    zniekształcenie znika, zostaje czyste szkło z blur + saturate
    ============================================================ */
 
@@ -3177,7 +3177,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 }
 
 /* ============================================================
-   Tekst w animacjach — bez zaznaczania i kopiowania
+   Tekst w animacjach – bez zaznaczania i kopiowania
    (zaznaczenie na ruchomych słowach wygląda jak usterka)
    ============================================================ */
 

@@ -1,5 +1,5 @@
 // ============================================================
-// PRISM — katalog modeli (wspólny dla wszystkich podstron)
+// PRISM – katalog modeli (wspólny dla wszystkich podstron)
 // ============================================================
 
 window.PRISM_PRODUCTS = [

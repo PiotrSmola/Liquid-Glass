@@ -1,5 +1,5 @@
 // ============================================================
-// PRISM — wersja angielska
+// PRISM – wersja angielska
 // Polskie teksty są w HTML (źródło). Elementy z data-i18n="klucz"
 // dostają tu angielski odpowiednik; atrybuty przez data-i18n-<atrybut>.
 // Język wybierany jest przed resztą skryptów, więc nagłówki
@@ -125,15 +125,15 @@ window.PRISM_EN = {
   "marquee.perks.3": "Trade in your old phone",
   "marquee.perks.4": "30 days to <em>change your mind</em>",
   "meta.contact.desc": "Write, call or drop by the Prism studio in Rzeszów. We reply within 24 hours.",
-  "meta.contact.title": "Contact — Prism",
-  "meta.home.desc": "Prism — a small studio from Rzeszów. Six carefully chosen smartphones, 24-hour delivery, 0% instalments and trade-in.",
-  "meta.home.title": "Prism — light sealed in glass",
+  "meta.contact.title": "Contact – Prism",
+  "meta.home.desc": "Prism – a small studio from Rzeszów. Six carefully chosen smartphones, 24-hour delivery, 0% instalments and trade-in.",
+  "meta.home.title": "Prism – light sealed in glass",
   "meta.manifest.desc": "Who we are and why we sell only six phones. Prism's four principles and the road from a garage to a studio.",
-  "meta.manifest.title": "Manifesto — Prism",
+  "meta.manifest.title": "Manifesto – Prism",
   "meta.product.desc": "Explore the phone in 3D, pick a colour and storage. 24-hour delivery, 0% instalments and 30-day returns.",
-  "meta.product.title": "Model — Prism",
+  "meta.product.title": "Model – Prism",
   "meta.shop.desc": "Six carefully chosen smartphones: Apple, Samsung, Google, Xiaomi, OnePlus and Nothing. Filter, sort and add to cart.",
-  "meta.shop.title": "Shop — Prism",
+  "meta.shop.title": "Shop – Prism",
   "mf.endCta": "How to find us",
   "mf.endLabel": "See you soon",
   "mf.endTitle": "Drop by for coffee.<br>The phones <em>can wait.</em>",
@@ -177,7 +177,7 @@ window.PRISM_EN = {
   "nav.home": "Home",
   "nav.label": "Main navigation",
   "nav.lang": "Switch language to Polish",
-  "nav.logo": "Prism — home",
+  "nav.logo": "Prism – home",
   "nav.manifest": "Manifesto",
   "nav.search": "Search phones…",
   "nav.searchLabel": "Search phones",
@@ -220,7 +220,7 @@ window.PRISM_EN = {
     if (fromUrl === "pl" || fromUrl === "en") localStorage.setItem("prism-lang", fromUrl);
     lang = localStorage.getItem("prism-lang") === "en" ? "en" : "pl";
   } catch {
-    /* brak localStorage — zostaje polski */
+    /* brak localStorage – zostaje polski */
   }
   window.PRISM_LANG = lang;
   window.PRISM_APPLY_I18N = () => {};
