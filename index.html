@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prism — światło zamknięte w szkle</title>
-  <meta name="description" content="Prism — mała pracownia z Rzeszowa. Sześć starannie wybranych smartfonów, dostawa w 24 h, raty 0% i odkup starego telefonu.">
+  <title data-i18n="meta.home.title">Prism — światło zamknięte w szkle</title>
+  <meta name="description" content="Prism — mała pracownia z Rzeszowa. Sześć starannie wybranych smartfonów, dostawa w 24 h, raty 0% i odkup starego telefonu." data-i18n-content="meta.home.desc">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='14' y='6' width='36' height='52' rx='10' fill='url(%23g)'/%3E%3Crect x='26' y='11' width='12' height='3' rx='1.5' fill='rgba(255,255,255,.85)'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300..800&display=swap">
   <link rel="stylesheet" href="styles.css">
+  <script src="i18n.js"></script>
 </head>
 <body data-page="home">
 
   <!-- Kurtyna przejścia między podstronami -->
-  <div class="curtain" aria-hidden="true"><span>Prism</span><small>Start</small></div>
+  <div class="curtain" aria-hidden="true"><span>Prism</span><small data-i18n="curtain.home">Start</small></div>
 
   <!-- Tło: gradient + pływające kule światła -->
   <div class="bg" aria-hidden="true">
@@ -42,7 +43,7 @@
   <!-- ===== NAGŁÓWEK ===== -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner glass">
-      <a class="logo" href="index.html" aria-label="Prism — strona główna">
+      <a class="logo" href="index.html" aria-label="Prism — strona główna" data-i18n-aria-label="nav.logo">
         <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
           <rect x="14" y="6" width="36" height="52" rx="10" fill="url(#logo-g)"/>
           <rect x="26" y="11" width="12" height="3" rx="1.5" fill="rgba(255,255,255,.85)"/>
@@ -50,12 +51,12 @@
         <span>Prism</span>
       </a>
 
-      <nav class="main-nav" id="mainNav" aria-label="Nawigacja główna">
+      <nav class="main-nav" id="mainNav" aria-label="Nawigacja główna" data-i18n-aria-label="nav.label">
         <ul>
-          <li><a href="index.html" aria-current="page">Start<sup>01</sup></a></li>
-          <li><a href="sklep.html">Sklep<sup>02</sup></a></li>
-          <li><a href="manifest.html">Manifest<sup>03</sup></a></li>
-          <li><a href="kontakt.html">Kontakt<sup>04</sup></a></li>
+          <li><a href="index.html" aria-current="page"><span data-i18n="nav.home">Start</span><sup>01</sup></a></li>
+          <li><a href="sklep.html"><span data-i18n="nav.shop">Sklep</span><sup>02</sup></a></li>
+          <li><a href="manifest.html"><span data-i18n="nav.manifest">Manifest</span><sup>03</sup></a></li>
+          <li><a href="kontakt.html"><span data-i18n="nav.contact">Kontakt</span><sup>04</sup></a></li>
         </ul>
       </nav>
 
@@ -64,10 +65,14 @@
           <circle cx="11" cy="11" r="7"/>
           <path d="M20 20l-3.8-3.8"/>
         </svg>
-        <input type="search" id="searchInput" placeholder="Szukaj telefonu…" autocomplete="off" aria-label="Szukaj telefonu">
+        <input type="search" id="searchInput" placeholder="Szukaj telefonu…" data-i18n-placeholder="nav.search" autocomplete="off" aria-label="Szukaj telefonu" data-i18n-aria-label="nav.searchLabel">
       </label>
 
-      <button class="cart-btn" id="cartBtn" type="button" aria-label="Koszyk">
+      <button class="lang-switch" id="langSwitch" type="button" aria-label="Zmień język na angielski" data-i18n-aria-label="nav.lang">
+        <span data-lang="pl">PL</span><span data-lang="en">EN</span>
+      </button>
+
+      <button class="cart-btn" id="cartBtn" type="button" aria-label="Koszyk" data-i18n-aria-label="nav.cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M3 4h2l2.3 12h11.4l2-8H6"/>
           <circle cx="9.5" cy="20" r="1.5"/>
@@ -90,17 +95,14 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <div class="hero-meta reveal" style="--d:.5s">
-            <span class="label no-line"><b>N°26</b> Kolekcja jesień</span>
+            <span class="label no-line" data-i18n="home.meta"><b>N°26</b> Kolekcja jesień</span>
             <span class="label no-line">50°02′N · 21°59′E</span>
           </div>
-          <h1 class="hero-title" data-split style="--d:.45s">Światło <em>zamknięte</em><br><span class="indent">w szkle.</span></h1>
-          <p class="hero-lead reveal" style="--d:.7s">
-            Prism to mała pracownia z Rzeszowa. Wybieramy tylko telefony, które sami chcielibyśmy
-            nosić w kieszeni, i dowozimy je w 24 godziny.
-          </p>
+          <h1 class="hero-title" data-split style="--d:.45s" data-i18n="home.title">Światło <em>zamknięte</em><br><span class="indent">w szkle.</span></h1>
+          <p class="hero-lead reveal" style="--d:.7s" data-i18n="home.lead">Prism to mała pracownia z Rzeszowa. Wybieramy tylko telefony, które sami chcielibyśmy nosić w kieszeni, i dowozimy je w 24 godziny.</p>
           <div class="hero-cta reveal" style="--d:.8s">
-            <a class="btn btn-primary glass" href="sklep.html">Wejdź do sklepu <span class="arrow">→</span></a>
-            <a class="btn btn-ghost glass" href="manifest.html">Nasz manifest</a>
+            <a class="btn btn-primary glass" href="sklep.html"><span data-i18n="home.ctaShop">Wejdź do sklepu</span> <span class="arrow">→</span></a>
+            <a class="btn btn-ghost glass" href="manifest.html" data-i18n="home.ctaManifest">Nasz manifest</a>
           </div>
         </div>
 
@@ -113,10 +115,10 @@
               <div class="widget">
                 <span class="w-title">Rzeszów</span>
                 <span class="w-big">11°</span>
-                <span class="w-sub">Mgliście · H: 13° N: 6°</span>
+                <span class="w-sub" data-i18n="screen.weather">Mgliście · H: 13° N: 6°</span>
               </div>
               <div class="widget">
-                <span class="w-title">Teraz odtwarzane</span>
+                <span class="w-title" data-i18n="screen.playing">Teraz odtwarzane</span>
                 <span class="w-sub">Neon Dreams · Glasswave</span>
                 <span class="w-bar"><i></i></span>
               </div>
@@ -127,12 +129,12 @@
           <span class="chip glass chip-3"><small>03</small>5G</span>
         </div>
       </div>
-      <div class="scroll-cue" aria-hidden="true"><i></i>Przewiń</div>
+      <div class="scroll-cue" aria-hidden="true"><i></i><span data-i18n="home.scroll">Przewiń</span></div>
     </section>
 
     <div class="marquee glass " aria-hidden="true">
-      <div class="marquee-track"><span>Darmowa dostawa <em>24 h</em></span><i class="dot"></i><span>Raty <em>0%</em></span><i class="dot"></i><span>2 lata gwarancji</span><i class="dot"></i><span>Odkup starego telefonu</span><i class="dot"></i><span>30 dni na <em>zmianę zdania</em></span><i class="dot"></i></div>
-      <div class="marquee-track"><span>Darmowa dostawa <em>24 h</em></span><i class="dot"></i><span>Raty <em>0%</em></span><i class="dot"></i><span>2 lata gwarancji</span><i class="dot"></i><span>Odkup starego telefonu</span><i class="dot"></i><span>30 dni na <em>zmianę zdania</em></span><i class="dot"></i></div>
+      <div class="marquee-track"><span data-i18n="marquee.perks.0">Darmowa dostawa <em>24 h</em></span><i class="dot"></i><span data-i18n="marquee.perks.1">Raty <em>0%</em></span><i class="dot"></i><span data-i18n="marquee.perks.2">2 lata gwarancji</span><i class="dot"></i><span data-i18n="marquee.perks.3">Odkup starego telefonu</span><i class="dot"></i><span data-i18n="marquee.perks.4">30 dni na <em>zmianę zdania</em></span><i class="dot"></i></div>
+      <div class="marquee-track"><span data-i18n="marquee.perks.0">Darmowa dostawa <em>24 h</em></span><i class="dot"></i><span data-i18n="marquee.perks.1">Raty <em>0%</em></span><i class="dot"></i><span data-i18n="marquee.perks.2">2 lata gwarancji</span><i class="dot"></i><span data-i18n="marquee.perks.3">Odkup starego telefonu</span><i class="dot"></i><span data-i18n="marquee.perks.4">30 dni na <em>zmianę zdania</em></span><i class="dot"></i></div>
     </div>
 
     <!-- ===== KOLEKCJA: pierścień 3D ===== -->
@@ -140,10 +142,10 @@
       <div class="container">
         <div class="section-top">
           <div>
-            <span class="label reveal"><b>01</b> Kolekcja</span>
-            <h2 class="display" data-split>Sześć telefonów.<br><em>Zero</em> przypadkowych.</h2>
+            <span class="label reveal" data-i18n="home.colLabel"><b>01</b> Kolekcja</span>
+            <h2 class="display" data-split data-i18n="home.colTitle">Sześć telefonów.<br><em>Zero</em> przypadkowych.</h2>
           </div>
-          <p class="reveal">Nie trzymamy na półkach setek modeli. Każdy z tych sześciu przeszedł nasz miesięczny test w prawdziwym życiu. Złap pierścień i obróć go, żeby się im przyjrzeć.</p>
+          <p class="reveal" data-i18n="home.colText">Nie trzymamy na półkach setek modeli. Każdy z tych sześciu przeszedł nasz miesięczny test w prawdziwym życiu. Złap pierścień i obróć go, żeby się im przyjrzeć.</p>
         </div>
 
         <div class="ring-stage reveal" id="ringStage">
@@ -152,12 +154,12 @@
         </div>
 
         <div class="ring-ui">
-          <button class="round-btn glass" id="ringPrev" type="button" aria-label="Poprzedni model"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></button>
+          <button class="round-btn glass" id="ringPrev" type="button" aria-label="Poprzedni model" data-i18n-aria-label="home.ringPrev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></button>
           <div class="ring-info glass" id="ringInfo" aria-live="polite">
             <div class="r-text"></div>
-            <a class="btn btn-primary glass" href="sklep.html">Zobacz <span class="arrow">→</span></a>
+            <a class="btn btn-primary glass" href="sklep.html"><span data-i18n="home.ringSee">Zobacz</span> <span class="arrow">→</span></a>
           </div>
-          <button class="round-btn glass" id="ringNext" type="button" aria-label="Następny model"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+          <button class="round-btn glass" id="ringNext" type="button" aria-label="Następny model" data-i18n-aria-label="home.ringNext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
         </div>
       </div>
     </section>
@@ -165,32 +167,32 @@
     <!-- ===== DETAL: przyklejony telefon + rozdziały ===== -->
     <section class="story" id="detal">
       <div class="story-sticky container">
-        <span class="ghost-word" aria-hidden="true">Detal</span>
+        <span class="ghost-word" aria-hidden="true" data-i18n="home.storyGhost">Detal</span>
         <div class="story-copy">
-          <span class="label"><b>02</b> W szczegółach</span>
+          <span class="label" data-i18n="home.storyLabel"><b>02</b> W szczegółach</span>
           <div class="chapters">
             <div class="chapter active">
               <span class="ch-num">01</span>
-              <h3>Ekran, który <em>oddycha.</em></h3>
-              <p>Do 120 klatek na sekundę i jasność, przy której czytasz w pełnym słońcu. Przewijanie przypomina przesuwanie kartki, a nie pikseli.</p>
+              <h3 data-i18n="home.ch1Title">Ekran, który <em>oddycha.</em></h3>
+              <p data-i18n="home.ch1Text">Do 120 klatek na sekundę i jasność, przy której czytasz w pełnym słońcu. Przewijanie przypomina przesuwanie kartki, a nie pikseli.</p>
             </div>
             <div class="chapter">
               <span class="ch-num">02</span>
-              <h3>Aparat <em>z pamięcią.</em></h3>
-              <p>Trzy obiektywy, jeden cel: zdjęcie, które za dziesięć lat nadal wywoła to samo uczucie co w chwili, gdy je robiłeś.</p>
+              <h3 data-i18n="home.ch2Title">Aparat <em>z pamięcią.</em></h3>
+              <p data-i18n="home.ch2Text">Trzy obiektywy, jeden cel: zdjęcie, które za dziesięć lat nadal wywoła to samo uczucie co w chwili, gdy je robiłeś.</p>
             </div>
             <div class="chapter">
               <span class="ch-num">03</span>
-              <h3>Bateria na <em>dwa dni.</em></h3>
-              <p>Ogniwa krzemowo-węglowe i ładowanie, które od zera do pełna trwa krócej niż jeden odcinek serialu.</p>
+              <h3 data-i18n="home.ch3Title">Bateria na <em>dwa dni.</em></h3>
+              <p data-i18n="home.ch3Text">Ogniwa krzemowo-węglowe i ładowanie, które od zera do pełna trwa krócej niż jeden odcinek serialu.</p>
             </div>
           </div>
         </div>
         <div class="story-stage" aria-hidden="true">
           <div id="storyPhone">
-            <div class="scr scr-display on" data-ch="0"><span>Odświeżanie · Hz</span><strong>120</strong></div>
+            <div class="scr scr-display on" data-ch="0"><span data-i18n="home.scr1">Odświeżanie · Hz</span><strong>120</strong></div>
             <div class="scr scr-camera" data-ch="1"><i class="grid"></i><i class="shutter"></i></div>
-            <div class="scr scr-power" data-ch="2"><div class="battery"><i></i></div><span>Ładowanie 100 W</span><strong id="batteryLabel">20%</strong></div>
+            <div class="scr scr-power" data-ch="2"><div class="battery"><i></i></div><span data-i18n="home.scr3">Ładowanie 100 W</span><strong id="batteryLabel">20%</strong></div>
           </div>
           <div class="story-progress"><i></i><i></i><i></i></div>
         </div>
@@ -202,16 +204,16 @@
       <span class="deal-num" aria-hidden="true">−40%</span>
       <div class="container deal-grid">
         <div class="deal-copy">
-          <span class="label reveal"><b>03</b> Okazja</span>
-          <h2 class="display" data-split>Jesienna<br>wyprzedaż <em>flagowców.</em></h2>
-          <p class="reveal">Najniższe ceny sezonu na wybrane modele premium. Bez gwiazdek i drobnego druku: po prostu taniej, dopóki zegar nie stanie.</p>
-          <a class="btn btn-primary glass reveal" href="sklep.html">Złap okazję <span class="arrow">→</span></a>
+          <span class="label reveal" data-i18n="home.dealLabel"><b>03</b> Okazja</span>
+          <h2 class="display" data-split data-i18n="home.dealTitle">Jesienna<br>wyprzedaż <em>flagowców.</em></h2>
+          <p class="reveal" data-i18n="home.dealText">Najniższe ceny sezonu na wybrane modele premium. Bez gwiazdek i drobnego druku: po prostu taniej, dopóki zegar nie stanie.</p>
+          <a class="btn btn-primary glass reveal" href="sklep.html"><span data-i18n="home.dealCta">Złap okazję</span> <span class="arrow">→</span></a>
         </div>
-        <div class="countdown reveal" role="timer" aria-label="Czas do końca promocji">
-          <div class="time-box glass"><span class="t-num" id="cd-days">00</span><span class="t-label">dni</span></div>
-          <div class="time-box glass"><span class="t-num" id="cd-hours">00</span><span class="t-label">godz.</span></div>
+        <div class="countdown reveal" role="timer" aria-label="Czas do końca promocji" data-i18n-aria-label="home.timer">
+          <div class="time-box glass"><span class="t-num" id="cd-days">00</span><span class="t-label" data-i18n="home.days">dni</span></div>
+          <div class="time-box glass"><span class="t-num" id="cd-hours">00</span><span class="t-label" data-i18n="home.hours">godz.</span></div>
           <div class="time-box glass"><span class="t-num" id="cd-mins">00</span><span class="t-label">min</span></div>
-          <div class="time-box glass"><span class="t-num" id="cd-secs">00</span><span class="t-label">sek.</span></div>
+          <div class="time-box glass"><span class="t-num" id="cd-secs">00</span><span class="t-label" data-i18n="home.secs">sek.</span></div>
         </div>
       </div>
     </section>
@@ -219,27 +221,27 @@
     <!-- ===== GŁOSY ===== -->
     <section class="voices" id="glosy">
       <div class="container">
-        <span class="label reveal"><b>04</b> Głosy</span>
+        <span class="label reveal" data-i18n="home.voicesLabel"><b>04</b> Głosy</span>
         <div class="voice-wrap">
           <div class="voice-mark" aria-hidden="true">„</div>
           <div>
             <div class="voice-list">
               <figure class="voice active">
-                <blockquote>Zamówiłam wieczorem, kurier był przed południem. Telefon pachniał jeszcze fabryką, a cena była najlepsza w kraju.</blockquote>
-                <figcaption><strong>Marta K.</strong><span>KRAKÓW · GALAXY S25 ULTRA</span></figcaption>
+                <blockquote data-i18n="home.v1">Zamówiłam wieczorem, kurier był przed południem. Telefon pachniał jeszcze fabryką, a cena była najlepsza w kraju.</blockquote>
+                <figcaption><strong>Marta K.</strong><span data-i18n="home.v1By">KRAKÓW · GALAXY S25 ULTRA</span></figcaption>
               </figure>
               <figure class="voice">
-                <blockquote>Oddałem stary telefon w rozliczeniu. Wycena uczciwa, wszystko trwało dziesięć minut i kawę.</blockquote>
+                <blockquote data-i18n="home.v2">Oddałem stary telefon w rozliczeniu. Wycena uczciwa, wszystko trwało dziesięć minut i kawę.</blockquote>
                 <figcaption><strong>Tomasz W.</strong><span>RZESZÓW · PIXEL 9 PRO</span></figcaption>
               </figure>
               <figure class="voice">
-                <blockquote>Raty zero procent naprawdę bez haczyków. Pomogli mi nawet przenieść zdjęcia z ośmiu lat.</blockquote>
-                <figcaption><strong>Aleksandra P.</strong><span>WARSZAWA · IPHONE 16 PRO</span></figcaption>
+                <blockquote data-i18n="home.v3">Raty zero procent naprawdę bez haczyków. Pomogli mi nawet przenieść zdjęcia z ośmiu lat.</blockquote>
+                <figcaption><strong>Aleksandra P.</strong><span data-i18n="home.v3By">WARSZAWA · IPHONE 16 PRO</span></figcaption>
               </figure>
             </div>
             <div class="voice-nav">
-              <button class="round-btn glass" id="voicePrev" type="button" aria-label="Poprzednia opinia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></button>
-              <button class="round-btn glass" id="voiceNext" type="button" aria-label="Następna opinia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+              <button class="round-btn glass" id="voicePrev" type="button" aria-label="Poprzednia opinia" data-i18n-aria-label="home.vPrev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></button>
+              <button class="round-btn glass" id="voiceNext" type="button" aria-label="Następna opinia" data-i18n-aria-label="home.vNext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
               <span class="count" id="voiceCount">01 / 03</span>
             </div>
           </div>
@@ -248,16 +250,16 @@
     </section>
 
     <div class="marquee glass tilt-right reverse" aria-hidden="true">
-      <div class="marquee-track"><span>Apple</span><i class="dot"></i><span><em>Samsung</em></span><i class="dot"></i><span>Google</span><i class="dot"></i><span><em>Xiaomi</em></span><i class="dot"></i><span>OnePlus</span><i class="dot"></i><span><em>Nothing</em></span><i class="dot"></i></div>
-      <div class="marquee-track"><span>Apple</span><i class="dot"></i><span><em>Samsung</em></span><i class="dot"></i><span>Google</span><i class="dot"></i><span><em>Xiaomi</em></span><i class="dot"></i><span>OnePlus</span><i class="dot"></i><span><em>Nothing</em></span><i class="dot"></i></div>
+      <div class="marquee-track"><span data-i18n="marquee.brands.0">Apple</span><i class="dot"></i><span data-i18n="marquee.brands.1"><em>Samsung</em></span><i class="dot"></i><span data-i18n="marquee.brands.2">Google</span><i class="dot"></i><span data-i18n="marquee.brands.3"><em>Xiaomi</em></span><i class="dot"></i><span data-i18n="marquee.brands.4">OnePlus</span><i class="dot"></i><span data-i18n="marquee.brands.5"><em>Nothing</em></span><i class="dot"></i></div>
+      <div class="marquee-track"><span data-i18n="marquee.brands.0">Apple</span><i class="dot"></i><span data-i18n="marquee.brands.1"><em>Samsung</em></span><i class="dot"></i><span data-i18n="marquee.brands.2">Google</span><i class="dot"></i><span data-i18n="marquee.brands.3"><em>Xiaomi</em></span><i class="dot"></i><span data-i18n="marquee.brands.4">OnePlus</span><i class="dot"></i><span data-i18n="marquee.brands.5"><em>Nothing</em></span><i class="dot"></i></div>
     </div>
 
     <!-- ===== FINAŁ ===== -->
     <section class="finale">
       <div class="container">
-        <span class="label no-line reveal">Koniec przewijania</span>
-        <h2 class="display" data-split>Twój następny telefon<br>już <em>czeka</em> na półce.</h2>
-        <a class="btn btn-primary btn-lg glass reveal" href="sklep.html">Otwórz sklep <span class="arrow">→</span></a>
+        <span class="label no-line reveal" data-i18n="home.endLabel">Koniec przewijania</span>
+        <h2 class="display" data-split data-i18n="home.endTitle">Twój następny telefon<br>już <em>czeka</em> na półce.</h2>
+        <a class="btn btn-primary btn-lg glass reveal" href="sklep.html"><span data-i18n="home.endCta">Otwórz sklep</span> <span class="arrow">→</span></a>
       </div>
     </section>
 
@@ -275,7 +277,7 @@
             </svg>
             <span>Prism</span>
           </a>
-          <p>Mała pracownia z Rzeszowa. Sześć starannie wybranych telefonów, dostawa w 24 godziny i ludzie, którzy odbierają telefon.</p>
+          <p data-i18n="footer.about">Mała pracownia z Rzeszowa. Sześć starannie wybranych telefonów, dostawa w 24 godziny i ludzie, którzy odbierają telefon.</p>
           <div class="socials">
             <a href="#" class="glass" aria-label="Facebook">Fb</a>
             <a href="#" class="glass" aria-label="Instagram">Ig</a>
@@ -284,41 +286,41 @@
           </div>
         </div>
 
-        <nav class="footer-col" aria-label="Sklep">
-          <h4>Sklep</h4>
+        <nav class="footer-col" aria-label="Sklep" data-i18n-aria-label="footer.shop">
+          <h4 data-i18n="footer.shop">Sklep</h4>
           <ul>
-            <li><a href="sklep.html">Wszystkie modele</a></li>
+            <li><a href="sklep.html" data-i18n="footer.all">Wszystkie modele</a></li>
             <li><a href="sklep.html?q=apple">Apple</a></li>
             <li><a href="sklep.html?q=samsung">Samsung</a></li>
-            <li><a href="index.html#okazja">Wyprzedaż</a></li>
+            <li><a href="index.html#okazja" data-i18n="footer.sale">Wyprzedaż</a></li>
           </ul>
         </nav>
 
-        <nav class="footer-col" aria-label="Pomoc">
-          <h4>Pomoc</h4>
+        <nav class="footer-col" aria-label="Pomoc" data-i18n-aria-label="footer.help">
+          <h4 data-i18n="footer.help">Pomoc</h4>
           <ul>
-            <li><a href="kontakt.html#faq">Dostawa i płatności</a></li>
-            <li><a href="kontakt.html#faq">Zwroty</a></li>
-            <li><a href="manifest.html">O nas</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="kontakt.html#faq" data-i18n="footer.delivery">Dostawa i płatności</a></li>
+            <li><a href="kontakt.html#faq" data-i18n="footer.returns">Zwroty</a></li>
+            <li><a href="manifest.html" data-i18n="footer.about2">O nas</a></li>
+            <li><a href="kontakt.html" data-i18n="nav.contact">Kontakt</a></li>
           </ul>
         </nav>
 
         <div class="footer-col footer-news">
           <h4>Newsletter</h4>
-          <p>Raz w miesiącu, bez spamu. Na start <strong>50 zł</strong> rabatu.</p>
+          <p data-i18n="footer.newsText">Raz w miesiącu, bez spamu. Na start <strong>50 zł</strong> rabatu.</p>
           <form class="newsletter-form" id="newsletterForm" novalidate>
-            <input type="email" id="newsletterEmail" placeholder="Twój e-mail" required aria-label="Adres e-mail">
-            <button class="btn btn-primary glass" type="submit">Zapisz się</button>
+            <input type="email" id="newsletterEmail" placeholder="Twój e-mail" data-i18n-placeholder="footer.email" required aria-label="Adres e-mail" data-i18n-aria-label="footer.emailLabel">
+            <button class="btn btn-primary glass" type="submit" data-i18n="footer.subscribe">Zapisz się</button>
           </form>
-          <p class="newsletter-msg" id="newsletterMsg" hidden>Dziękujemy, sprawdź skrzynkę.</p>
+          <p class="newsletter-msg" id="newsletterMsg" hidden data-i18n="footer.thanks">Dziękujemy, sprawdź skrzynkę.</p>
         </div>
       </div>
 
       <p class="footer-word" aria-hidden="true">Prism</p>
 
       <div class="footer-bottom">
-        <p>© <span class="js-year">2026</span> Prism · projekt demonstracyjny liquid glass UI</p>
+        <p>© <span class="js-year">2026</span> Prism · <span data-i18n="footer.demo">projekt demonstracyjny liquid glass UI</span></p>
         <p>Rzeszów, PL · 50°02′N 21°59′E</p>
       </div>
     </div>
@@ -326,18 +328,18 @@
 
   <!-- ===== KOSZYK ===== -->
   <div class="scrim" id="scrim"></div>
-  <aside class="drawer glass" id="drawer" aria-hidden="true" aria-label="Koszyk">
+  <aside class="drawer glass" id="drawer" aria-hidden="true" aria-label="Koszyk" data-i18n-aria-label="nav.cart">
     <div class="drawer-head">
-      <h2>Koszyk<em id="drawerQty"></em></h2>
-      <button class="icon-btn" id="drawerClose" type="button" aria-label="Zamknij koszyk">
+      <h2><span data-i18n="cart.title">Koszyk</span><em id="drawerQty"></em></h2>
+      <button class="icon-btn" id="drawerClose" type="button" aria-label="Zamknij koszyk" data-i18n-aria-label="cart.close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
     <div class="drawer-items" id="drawerItems"></div>
     <div class="drawer-foot">
-      <div class="drawer-total"><span>Razem</span><strong id="drawerTotal">0 zł</strong></div>
-      <p class="drawer-note">Dostawa gratis · wysyłka w 24 h · 30 dni na zwrot</p>
-      <button class="btn btn-primary glass" id="checkoutBtn" type="button">Przejdź do kasy <span class="arrow">→</span></button>
+      <div class="drawer-total"><span data-i18n="cart.total">Razem</span><strong id="drawerTotal">0 zł</strong></div>
+      <p class="drawer-note" data-i18n="cart.note">Dostawa gratis · wysyłka w 24 h · 30 dni na zwrot</p>
+      <button class="btn btn-primary glass" id="checkoutBtn" type="button"><span data-i18n="cart.checkout">Przejdź do kasy</span> <span class="arrow">→</span></button>
     </div>
   </aside>
 

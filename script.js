@@ -11,7 +11,92 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
-  const PRODUCTS = window.PRISM_PRODUCTS || [];
+  // ------------------------------------------------------------
+  // Język — teksty statyczne tłumaczy i18n.js, tu komunikaty z JS
+  // ------------------------------------------------------------
+  const LANG = window.PRISM_LANG === "en" ? "en" : "pl";
+  window.PRISM_APPLY_I18N?.();
+
+  const STR = {
+    pl: {
+      locale: "pl-PL",
+      from: "od",
+      colors: "kolory",
+      addToCart: "Do koszyka",
+      added: "Dodano ✓",
+      addedToast: "Dodano do koszyka: {name}",
+      cartEmpty1: "Pusto jak na plaży w listopadzie.",
+      cartEmpty2: "Dodaj telefon, a pojawi się tutaj.",
+      less: "Mniej",
+      more: "Więcej",
+      remove: "Usuń",
+      checkoutDemo: "Kasa w budowie — to projekt demonstracyjny",
+      checkoutEmpty: "Najpierw dodaj coś do koszyka",
+      found: "Znaleziono: {n} {word}",
+      inStock: "{n} {word} w ofercie",
+      monthly: "lub 20 rat × {price}<br>bez odsetek",
+      instToast: "Raty 0%: 20 × {price}",
+      badEmail: "Podaj poprawny adres e-mail",
+      subscribed: "Zapisano do newslettera",
+      open: "Salon otwarty, zamykamy o {h}:00",
+      closed: "Teraz zamknięte, otwieramy {when}",
+      today: "dziś",
+      tomorrow: "jutro",
+      at: "o",
+      soon: "wkrótce",
+      days: ["nd.", "pn.", "wt.", "śr.", "czw.", "pt.", "sob."],
+      fillFields: "Uzupełnij zaznaczone pola",
+      sent: "Wiadomość wysłana, odpiszemy w ciągu 24 h",
+      specs: {},
+    },
+    en: {
+      locale: "en-GB",
+      from: "from",
+      colors: "colours",
+      addToCart: "Add to cart",
+      added: "Added ✓",
+      addedToast: "Added to cart: {name}",
+      cartEmpty1: "Empty as a beach in November.",
+      cartEmpty2: "Add a phone and it will show up here.",
+      less: "Fewer",
+      more: "More",
+      remove: "Remove",
+      checkoutDemo: "Checkout under construction — this is a demo project",
+      checkoutEmpty: "Add something to your cart first",
+      found: "Found: {n} {word}",
+      inStock: "{n} {word} in stock",
+      monthly: "or 20 × {price}<br>interest-free",
+      instToast: "0% instalments: 20 × {price}",
+      badEmail: "Please enter a valid e-mail address",
+      subscribed: "Subscribed to the newsletter",
+      open: "Studio open, we close at {h}:00",
+      closed: "Closed now, we open {when}",
+      today: "today",
+      tomorrow: "tomorrow",
+      at: "at",
+      soon: "soon",
+      days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      fillFields: "Please fill in the highlighted fields",
+      sent: "Message sent, we'll reply within 24 h",
+      specs: { Ekran: "Display", Procesor: "Chip", Aparat: "Camera", Bateria: "Battery", Waga: "Weight" },
+    },
+  }[LANG];
+
+  const t = (key, vars = {}) => STR[key].replace(/\{(\w+)\}/g, (_, k) => vars[k]);
+
+  // katalog w wybranym języku: nadpisania tekstów, etykiety specyfikacji, kropka dziesiętna
+  const PRODUCTS = (window.PRISM_PRODUCTS || []).map((p) => {
+    if (LANG === "pl") return p;
+    const en = (window.PRISM_PRODUCTS_EN || {})[p.id] || {};
+    return {
+      ...p,
+      tagline: en.tagline || p.tagline,
+      badge: p.badge && (en.badge || p.badge),
+      colors: p.colors.map((c, i) => ({ ...c, name: en.colors?.[i] || c.name })),
+      specs: p.specs.map(([k, v]) => [STR.specs[k] || k, v.replace(/(\d),(\d)/g, "$1.$2")]),
+    };
+  });
+
   const page = document.body.dataset.page;
   const params = new URLSearchParams(location.search);
   const finePointer = window.matchMedia("(pointer: fine)").matches;
@@ -20,7 +105,8 @@
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const lerp = (a, b, t) => a + (b - a) * t;
   const pad = (n) => String(n).padStart(2, "0");
-  const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " zł";
+  const group = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, LANG === "en" ? "," : " ");
+  const fmt = (n) => (LANG === "en" ? `PLN ${group(n)}` : `${group(n)} zł`);
   const storageLabel = (gb) => (gb >= 1024 ? `${gb / 1024} TB` : `${gb} GB`);
   const STORAGE_STEP = 600; // dopłata za każdy wyższy wariant pamięci
   const priceOf = (p, s = 0) => p.price + s * STORAGE_STEP;
@@ -109,11 +195,11 @@
         <div class="p-info">
           <span class="p-brand">${p.brand}</span>
           <h3 class="p-name"><a class="p-link" href="produkt.html?id=${p.id}">${p.name}</a></h3>
-          <p class="p-specs">${screenSize} · ${p.specs[1][1]} · od ${storageLabel(p.storage[0])}</p>
-          <div class="p-swatches" aria-label="${p.colors.length} kolory">${p.colors.map((c) => `<i style="--c:${c.hex}" title="${c.name}"></i>`).join("")}</div>
+          <p class="p-specs">${screenSize} · ${p.specs[1][1]} · ${t("from")} ${storageLabel(p.storage[0])}</p>
+          <div class="p-swatches" aria-label="${p.colors.length} ${t("colors")}">${p.colors.map((c) => `<i style="--c:${c.hex}" title="${c.name}"></i>`).join("")}</div>
           <div class="p-row">
             <p class="p-price">${p.old ? `<s>${fmt(p.old)}</s>` : ""}<strong>${fmt(p.price)}</strong></p>
-            <button class="add-btn glass" type="button" data-add="${p.id}">Do koszyka</button>
+            <button class="add-btn glass" type="button" data-add="${p.id}">${t("addToCart")}</button>
           </div>
         </div>
       </article>`;
@@ -318,8 +404,8 @@
     if (!cart.length) {
       drawerItems.innerHTML = `
         <div class="drawer-empty"><div>
-          <p>Pusto jak na plaży w listopadzie.</p>
-          <p>Dodaj telefon, a pojawi się tutaj.</p>
+          <p>${t("cartEmpty1")}</p>
+          <p>${t("cartEmpty2")}</p>
         </div></div>`;
       drawerTotal.textContent = fmt(0);
       return;
@@ -338,12 +424,12 @@
               <h3>${p.name}</h3>
               <p>${p.colors[it.c].name} · ${storageLabel(p.storage[it.s])}</p>
               <div class="qty">
-                <button type="button" data-qty="-1" data-i="${i}" aria-label="Mniej">−</button>
+                <button type="button" data-qty="-1" data-i="${i}" aria-label="${t("less")}">−</button>
                 <span>${it.qty}</span>
-                <button type="button" data-qty="1" data-i="${i}" aria-label="Więcej">+</button>
+                <button type="button" data-qty="1" data-i="${i}" aria-label="${t("more")}">+</button>
               </div>
             </div>
-            <div class="drawer-price">${fmt(line)}<button type="button" data-remove="${i}">Usuń</button></div>
+            <div class="drawer-price">${fmt(line)}<button type="button" data-remove="${i}">${t("remove")}</button></div>
           </div>`;
       })
       .join("");
@@ -356,7 +442,7 @@
     else cart.push({ id, c, s, qty: 1 });
     saveCart();
     renderCart(true);
-    showToast(`Dodano do koszyka: ${findProduct(id).name}`);
+    showToast(t("addedToast", { name: findProduct(id).name }));
   };
 
   drawerItems.addEventListener("click", (e) => {
@@ -390,7 +476,7 @@
   document.addEventListener("keydown", (e) => e.key === "Escape" && closeDrawer());
 
   $("#checkoutBtn").addEventListener("click", () =>
-    showToast(cart.length ? "Kasa w budowie — to projekt demonstracyjny" : "Najpierw dodaj coś do koszyka")
+    showToast(t(cart.length ? "checkoutDemo" : "checkoutEmpty"))
   );
 
   // szybkie dodanie z karty: pierwszy kolor, najmniejsza pamięć
@@ -399,7 +485,7 @@
     if (!btn) return;
     addToCart(btn.dataset.add);
     const original = btn.textContent;
-    btn.textContent = "Dodano ✓";
+    btn.textContent = t("added");
     btn.classList.add("added");
     btn.disabled = true;
     setTimeout(() => {
@@ -434,6 +520,24 @@
     navigate(url.href);
   });
 
+  // ------------------------------------------------------------
+  // Przełącznik PL / EN — zapis wyboru i przeładowanie przez kurtynę
+  // (tłumaczenie musi zadziałać przed rozbiciem nagłówków na słowa)
+  // ------------------------------------------------------------
+  const langSwitch = $("#langSwitch");
+  langSwitch.dataset.active = LANG;
+  langSwitch.addEventListener("click", () => {
+    const next = LANG === "pl" ? "en" : "pl";
+    const url = new URL(location.href);
+    url.searchParams.delete("lang");
+    try {
+      localStorage.setItem("prism-lang", next);
+    } catch {
+      url.searchParams.set("lang", next); // bez localStorage język niesie adres
+    }
+    navigate(url.href);
+  });
+
   // powrót przyciskiem „wstecz” z bfcache — zdejmij kurtynę
   window.addEventListener("pageshow", (e) => {
     if (e.persisted) document.documentElement.classList.remove("is-leaving");
@@ -464,6 +568,7 @@
 
     const modelWord = (n) => {
       if (n === 1) return "model";
+      if (LANG === "en") return "models";
       const d = n % 10, h = n % 100;
       return d >= 2 && d <= 4 && (h < 12 || h > 14) ? "modele" : "modeli";
     };
@@ -480,8 +585,8 @@
       });
 
       searchInfo.textContent = query || brand !== "all"
-        ? `Znaleziono: ${visible} ${modelWord(visible)}`
-        : `${cards.length} ${modelWord(cards.length)} w ofercie`;
+        ? t("found", { n: visible, word: modelWord(visible) })
+        : t("inStock", { n: cards.length, word: modelWord(cards.length) });
       emptyQuery.textContent = searchInput.value.trim() || brand;
       emptyState.hidden = visible > 0;
     };
@@ -561,10 +666,10 @@
   const updateScreens = () => {
     const now = new Date();
     $$(".js-clock").forEach((el) => {
-      el.textContent = now.toLocaleTimeString("pl-PL", { hour: "numeric", minute: "2-digit" });
+      el.textContent = now.toLocaleTimeString(STR.locale, { hour: "numeric", minute: "2-digit" });
     });
     $$(".js-date").forEach((el) => {
-      el.textContent = now.toLocaleDateString("pl-PL", { weekday: "long", day: "numeric", month: "long" });
+      el.textContent = now.toLocaleDateString(STR.locale, { weekday: "long", day: "numeric", month: "long" });
     });
   };
 
@@ -816,13 +921,13 @@
 
     if (!EMAIL_RE.test(email)) {
       newsletterEmail.focus();
-      showToast("Podaj poprawny adres e-mail");
+      showToast(t("badEmail"));
       return;
     }
 
     newsletterMsg.hidden = false;
     newsletterForm.reset();
-    showToast("Zapisano do newslettera");
+    showToast(t("subscribed"));
   });
 
   // ------------------------------------------------------------
@@ -1101,7 +1206,7 @@
       const price = priceOf(product, storageIdx);
       priceEl.textContent = fmt(price);
       oldEl.textContent = product.old ? fmt(product.old + storageIdx * STORAGE_STEP) : "";
-      monthly.innerHTML = `lub 20 rat × ${fmt(Math.ceil(price / 20))}<br>bez odsetek`;
+      monthly.innerHTML = t("monthly", { price: fmt(Math.ceil(price / 20)) });
     };
 
     segmented.addEventListener("click", (e) => {
@@ -1120,7 +1225,7 @@
 
     $("#pdpAdd").addEventListener("click", () => addToCart(product.id, colorIdx, storageIdx));
     $("#pdpInstallments").addEventListener("click", () =>
-      showToast(`Raty 0%: 20 × ${fmt(Math.ceil(priceOf(product, storageIdx) / 20))}`)
+      showToast(t("instToast", { price: fmt(Math.ceil(priceOf(product, storageIdx) / 20)) }))
     );
   }
 
@@ -1177,7 +1282,7 @@
         const step = (now) => {
           const k = clamp((now - t0) / dur);
           const v = end * (1 - Math.pow(1 - k, 4));
-          const txt = dec ? v.toFixed(dec).replace(".", ",") : String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+          const txt = dec ? v.toFixed(dec).replace(".", LANG === "en" ? "." : ",") : group(Math.round(v));
           el.textContent = txt + suffix;
           if (k < 1) requestAnimationFrame(step);
         };
@@ -1224,7 +1329,6 @@
   if (statusPill) {
     // [otwarcie, zamknięcie] w godzinach; indeks = getDay() (0 = niedziela)
     const HOURS = [null, [10, 19], [10, 19], [10, 19], [10, 19], [10, 19], [10, 15]];
-    const DAYS = ["nd.", "pn.", "wt.", "śr.", "czw.", "pt.", "sob."];
     const statusText = $("#statusText");
     const statusTime = $("#statusTime");
 
@@ -1234,9 +1338,9 @@
         const h = HOURS[day];
         if (!h) continue;
         if (k === 0 && now.getHours() >= h[0]) continue;
-        return `${k === 0 ? "dziś" : k === 1 ? "jutro" : DAYS[day]} o ${h[0]}:00`;
+        return `${k === 0 ? t("today") : k === 1 ? t("tomorrow") : STR.days[day]} ${t("at")} ${h[0]}:00`;
       }
-      return "wkrótce";
+      return t("soon");
     };
 
     const updateStatus = () => {
@@ -1245,8 +1349,8 @@
       const hour = now.getHours() + now.getMinutes() / 60;
       const open = h && hour >= h[0] && hour < h[1];
       statusPill.classList.toggle("closed", !open);
-      statusText.textContent = open ? `Salon otwarty, zamykamy o ${h[1]}:00` : `Teraz zamknięte, otwieramy ${nextOpening(now)}`;
-      statusTime.textContent = now.toLocaleTimeString("pl-PL", { hour: "2-digit", minute: "2-digit" });
+      statusText.textContent = open ? t("open", { h: h[1] }) : t("closed", { when: nextOpening(now) });
+      statusTime.textContent = now.toLocaleTimeString(STR.locale, { hour: "2-digit", minute: "2-digit" });
     };
 
     updateStatus();
@@ -1270,11 +1374,11 @@
         }
       });
       if (!ok) {
-        showToast("Uzupełnij zaznaczone pola");
+        showToast(t("fillFields"));
         return;
       }
       contactForm.reset();
-      showToast("Wiadomość wysłana, odpiszemy w ciągu 24 h");
+      showToast(t("sent"));
     });
 
     contactForm.addEventListener("input", (e) => e.target.closest(".field")?.classList.remove("invalid"));
