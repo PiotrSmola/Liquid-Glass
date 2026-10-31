@@ -39,7 +39,10 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+/* overflow-x: clip zamiast hidden – nie tworzy kontenera przewijania, więc nie psuje
+   position: sticky, a na telefonach nie pozwala wystającym ozdobnikom (taśmy, konturowe
+   słowa, pierścień) poszerzyć układu i oddalić całej strony */
+html { scroll-behavior: smooth; overflow-x: clip; }
 
 body {
   font-family: var(--sans);
@@ -47,6 +50,7 @@ body {
   color: var(--ink);
   line-height: 1.6;
   overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -3078,11 +3082,14 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 
   .voice-wrap { grid-template-columns: 1fr; gap: 0; }
 
-  .voice-mark { font-size: 8rem; }
+  .voice-mark { font-size: 6rem; line-height: .62; margin-bottom: 14px; }
 
-  .voice-list { min-height: 420px; }
+  /* cytaty w jednej komórce siatki: blok ma wysokość najdłuższego, bez sztywnego min-height */
+  .voice-list { display: grid; min-height: 0; }
+  .voice { position: static; grid-area: 1 / 1; }
 
-  .viewer { position: relative; top: 0; height: 560px; }
+  .viewer { position: relative; top: 0; height: 600px; }
+  .viewer-hint { bottom: 4px; }
 
   .principle { grid-template-columns: 1fr; gap: 16px; }
   .principle p { grid-column: auto; }
@@ -3090,11 +3097,29 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   .stats { grid-template-columns: 1fr 1fr; row-gap: 40px; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-about, .footer-news { grid-column: 1 / -1; }
 
   .products-grid { --stagger: 0px; }
 
-  .pane-1 { left: -6%; }
-  .pane-3 { right: -10%; }
+  /* pasek filtrów nie przykleja się – na wąskim ekranie zasłaniałby karty */
+  .filter-bar { position: relative; top: auto; }
+  .filters {
+    -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent);
+    mask-image: linear-gradient(90deg, #000 82%, transparent);
+  }
+
+  .story .ghost-word { display: none; }
+
+  /* −40% chowa się za odliczaniem zamiast pod tekstem */
+  .deal-num { top: auto; bottom: 60px; right: -4vw; transform: none; font-size: clamp(8rem, 44vw, 20rem); }
+
+  /* mniejsze tafle w hero manifestu – nie zasłaniają całego tytułu */
+  .pane-1 { width: 120px; height: 160px; top: 10%; left: -10%; }
+  .pane-2 { width: 110px; height: 110px; top: 60%; left: 56%; }
+  .pane-3 { width: 170px; height: 100px; top: 12%; right: -14%; }
+  .pane-4 { width: 90px; height: 160px; bottom: 6%; right: 10%; }
+
+  .mf-sub { flex-direction: column; gap: 8px; }
 }
 
 @media (max-width: 560px) {
@@ -3104,9 +3129,24 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 
   .header-inner { padding-left: 16px; gap: 10px; }
 
+  /* wyszukiwarka zwinięta do ikony; po dotknięciu rozkłada się na cały pasek */
+  .search-box { flex: 0 0 44px; width: 44px; padding: 0 13px; margin-left: auto; }
+  .search-box:focus-within {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 12px;
+    right: 12px;
+    translate: 0 -50%;
+    width: auto;
+    background: rgba(14, 18, 42, .94);
+  }
+
+  .header-inner:has(.search-box:focus-within) .cart-count { visibility: hidden; }
+
   .lang-switch span { width: 26px; }
 
-  .logo span { display: none; }
+  .site-header .logo span { display: none; }
 
   .phone3d { --w: 220px; --h: 456px; --r: 40px; }
 
@@ -3115,6 +3155,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   .ring-ui { grid-template-columns: 1fr 1fr; }
   .ring-info { grid-column: 1 / -1; order: -1; }
   .ring-ui .round-btn:first-child { justify-self: end; }
+  .ring-ui .round-btn { width: 96px; height: 52px; }
 
   .chip-1 { left: -2%; }
   .chip-2 { right: -2%; }
@@ -3129,16 +3170,18 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 
   .field-row { grid-template-columns: 1fr; gap: 0; }
 
+  .status-pill { font-size: .82rem; }
+
   .specs div { grid-template-columns: 1fr; gap: 4px; }
 
   .pdp-actions { flex-direction: column; }
 
   .tl-card { flex-basis: 280px; }
 
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-grid { gap: 32px 20px; }
 
   .newsletter-form { flex-direction: column; }
-  .newsletter-form input { border-radius: 18px; }
+  .newsletter-form input { flex: none; border-radius: 18px; }
   .newsletter-form .btn { --lg-r: 18px; }
 
   .footer-bottom { justify-content: center; text-align: center; }
