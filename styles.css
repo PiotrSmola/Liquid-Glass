@@ -584,7 +584,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   width: 40px;
   height: 40px;
   border: none;
-  border-radius: 999px;
+  border-radius: 12px;
   display: grid;
   place-items: center;
   background: rgba(255, 255, 255, .06);
@@ -700,14 +700,17 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 
 .drawer-note { font-size: .8rem; color: var(--faint); margin-bottom: 16px; }
 
-.drawer-foot .btn { width: 100%; }
+.drawer-foot .btn { --lg-r: 18px; width: 100%; }
 
 /* ============================================================
    PRZYCISKI I DROBNE ELEMENTY
    ============================================================ */
 
+/* Kształty przycisków: --lg-r przyjmuje do czterech promieni (jak border-radius),
+   a clip-path warstwy refrakcji używa tej samej wartości — szkło zawsze
+   pokrywa się z obrysem. Domyślnie „liść”: dwa przeciwległe rogi ostre. */
 .btn {
-  --lg-r: 999px;
+  --lg-r: 24px 6px 24px 6px;
   --lg-blur: 0px;
   position: relative;
   overflow: hidden;
@@ -716,7 +719,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   justify-content: center;
   gap: 10px;
   padding: 15px 28px;
-  border-radius: 999px;
+  border-radius: var(--lg-r);
   border: none;
   background: none;
   font: inherit;
@@ -784,13 +787,23 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   box-shadow: 0 16px 40px rgba(99, 102, 241, .5), 0 2px 8px rgba(3, 6, 24, .25);
 }
 
-.btn-ghost { --lg-r: 999px; --lg-blur: 0px; }
+.btn-lg { --lg-r: 36px 8px 36px 8px; padding: 19px 36px; font-size: 1.05rem; }
+
+/* ghost = surowa, prawie prostokątna tafla z redakcyjnym liternictwem */
+.btn-ghost,
+.btn-ghost.btn-lg {
+  --lg-r: 8px;
+  --lg-blur: 0px;
+  font-family: var(--mono);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
 
 .btn-ghost:hover { --lg-tint: rgba(255, 255, 255, .08); transform: translateY(-2px); }
 
-.btn-lg { padding: 19px 34px; font-size: 1.05rem; }
-
-/* okrągły szklany przycisk ze strzałką */
+/* szklany przycisk ze strzałką: domyślnie koło, w kontekstach inne bryły */
 .round-btn {
   --lg-r: 999px;
   --lg-blur: 0px;
@@ -807,6 +820,12 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 .round-btn svg { width: 22px; height: 22px; }
 
 .round-btn:hover { --lg-tint: rgba(255, 255, 255, .08); }
+
+/* strzałki pierścienia — pionowe kapsuły po bokach karty */
+.ring-ui .round-btn { width: 54px; height: 92px; }
+
+/* nawigacja cytatów — kwadraty z miękkimi rogami */
+.voice-nav .round-btn { --lg-r: 16px; width: 56px; height: 56px; }
 
 /* etykieta sekcji: „01 — Kolekcja” */
 .label {
@@ -2041,7 +2060,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 .p-price strong { font-size: 1.22rem; }
 
 .add-btn {
-  --lg-r: 999px;
+  --lg-r: 20px 20px 20px 4px; /* dymek z ostrym rogiem */
   --lg-blur: 0px;
   position: relative;
   z-index: 2;
@@ -2260,7 +2279,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 }
 
 .segmented {
-  --lg-r: 999px;
+  --lg-r: 22px;
   --lg-blur: 0px;
   position: relative;
   display: flex;
@@ -2273,7 +2292,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   flex: 1;
   padding: 12px 10px;
   border: none;
-  border-radius: 999px;
+  border-radius: 16px;
   background: none;
   font-size: .92rem;
   font-weight: 600;
@@ -2288,7 +2307,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   position: absolute;
   top: 6px;
   bottom: 6px;
-  border-radius: 999px;
+  border-radius: 16px;
   background: var(--lime);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, .8), 0 6px 18px rgba(228, 255, 122, .3);
   transition: left .5s var(--ease-jelly), width .5s var(--ease-jelly);
@@ -2802,7 +2821,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
 .socials { display: flex; gap: 10px; }
 
 .socials a {
-  --lg-r: 999px;
+  --lg-r: 12px;
   --lg-blur: 0px;
   width: 40px;
   height: 40px;
@@ -2842,7 +2861,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   min-width: 0;
   height: 48px;
   padding: 0 18px;
-  border-radius: 999px;
+  border-radius: 24px 6px 6px 24px;
   border: none;
   background: rgba(255, 255, 255, .04);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, .3), inset 0 0 0 1px rgba(255, 255, 255, .1);
@@ -2860,7 +2879,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, .35), inset 0 0 0 1px rgba(228, 255, 122, .5), 0 0 0 4px rgba(228, 255, 122, .1);
 }
 
-.newsletter-form .btn { padding: 0 22px; height: 48px; font-size: .9rem; }
+.newsletter-form .btn { --lg-r: 6px 24px 24px 6px; padding: 0 22px; height: 48px; font-size: .9rem; }
 
 .newsletter-msg { margin-top: 14px; font-size: .92rem; color: var(--lime); }
 
@@ -3063,6 +3082,8 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
 
   .newsletter-form { flex-direction: column; }
+  .newsletter-form input { border-radius: 18px; }
+  .newsletter-form .btn { --lg-r: 18px; }
 
   .footer-bottom { justify-content: center; text-align: center; }
 }
