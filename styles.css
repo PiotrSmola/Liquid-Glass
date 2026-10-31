@@ -1274,7 +1274,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   min-height: 80svh;
   display: flex;
   align-items: center;
-  padding: calc(var(--header-h) + 60px) 0 70px;
+  padding: calc(var(--header-h) + 60px) 0 100px;
 }
 
 .hero .ghost-word { right: -4vw; bottom: 2vh; }
