@@ -1793,7 +1793,7 @@ body.drawer-open .drawer { transform: none; visibility: visible; }
   color: var(--lime);
 }
 
-.voice-list { position: relative; min-height: 340px; }
+.voice-list { position: relative; min-height: 220px; }
 
 .voice {
   position: absolute;
