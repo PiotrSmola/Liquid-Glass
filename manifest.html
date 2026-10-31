@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Manifest — Prism</title>
-  <meta name="description" content="Kim jesteśmy i dlaczego sprzedajemy tylko sześć telefonów. Cztery zasady Prism i droga od garażu do pracowni.">
+  <title data-i18n="meta.manifest.title">Manifest — Prism</title>
+  <meta name="description" content="Kim jesteśmy i dlaczego sprzedajemy tylko sześć telefonów. Cztery zasady Prism i droga od garażu do pracowni." data-i18n-content="meta.manifest.desc">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='14' y='6' width='36' height='52' rx='10' fill='url(%23g)'/%3E%3Crect x='26' y='11' width='12' height='3' rx='1.5' fill='rgba(255,255,255,.85)'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300..800&display=swap">
   <link rel="stylesheet" href="styles.css">
+  <script src="i18n.js"></script>
 </head>
 <body data-page="manifest">
 
   <!-- Kurtyna przejścia między podstronami -->
-  <div class="curtain" aria-hidden="true"><span>Prism</span><small>Manifest</small></div>
+  <div class="curtain" aria-hidden="true"><span>Prism</span><small data-i18n="curtain.manifest">Manifest</small></div>
 
   <!-- Tło: gradient + pływające kule światła -->
   <div class="bg" aria-hidden="true">
@@ -42,7 +43,7 @@
   <!-- ===== NAGŁÓWEK ===== -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner glass">
-      <a class="logo" href="index.html" aria-label="Prism — strona główna">
+      <a class="logo" href="index.html" aria-label="Prism — strona główna" data-i18n-aria-label="nav.logo">
         <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
           <rect x="14" y="6" width="36" height="52" rx="10" fill="url(#logo-g)"/>
           <rect x="26" y="11" width="12" height="3" rx="1.5" fill="rgba(255,255,255,.85)"/>
@@ -50,12 +51,12 @@
         <span>Prism</span>
       </a>
 
-      <nav class="main-nav" id="mainNav" aria-label="Nawigacja główna">
+      <nav class="main-nav" id="mainNav" aria-label="Nawigacja główna" data-i18n-aria-label="nav.label">
         <ul>
-          <li><a href="index.html">Start<sup>01</sup></a></li>
-          <li><a href="sklep.html">Sklep<sup>02</sup></a></li>
-          <li><a href="manifest.html" aria-current="page">Manifest<sup>03</sup></a></li>
-          <li><a href="kontakt.html">Kontakt<sup>04</sup></a></li>
+          <li><a href="index.html"><span data-i18n="nav.home">Start</span><sup>01</sup></a></li>
+          <li><a href="sklep.html"><span data-i18n="nav.shop">Sklep</span><sup>02</sup></a></li>
+          <li><a href="manifest.html" aria-current="page"><span data-i18n="nav.manifest">Manifest</span><sup>03</sup></a></li>
+          <li><a href="kontakt.html"><span data-i18n="nav.contact">Kontakt</span><sup>04</sup></a></li>
         </ul>
       </nav>
 
@@ -64,10 +65,14 @@
           <circle cx="11" cy="11" r="7"/>
           <path d="M20 20l-3.8-3.8"/>
         </svg>
-        <input type="search" id="searchInput" placeholder="Szukaj telefonu…" autocomplete="off" aria-label="Szukaj telefonu">
+        <input type="search" id="searchInput" placeholder="Szukaj telefonu…" data-i18n-placeholder="nav.search" autocomplete="off" aria-label="Szukaj telefonu" data-i18n-aria-label="nav.searchLabel">
       </label>
 
-      <button class="cart-btn" id="cartBtn" type="button" aria-label="Koszyk">
+      <button class="lang-switch" id="langSwitch" type="button" aria-label="Zmień język na angielski" data-i18n-aria-label="nav.lang">
+        <span data-lang="pl">PL</span><span data-lang="en">EN</span>
+      </button>
+
+      <button class="cart-btn" id="cartBtn" type="button" aria-label="Koszyk" data-i18n-aria-label="nav.cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M3 4h2l2.3 12h11.4l2-8H6"/>
           <circle cx="9.5" cy="20" r="1.5"/>
@@ -86,9 +91,9 @@
 
     <section class="mf-hero">
       <div class="container">
-        <span class="label reveal" style="--d:.5s"><b>Manifest</b> Prism, Rzeszów 2019–2026</span>
-        <h1 class="mf-title" data-split style="--d:.45s">Nie sprzedajemy<br>telefonów. Sprzedajemy <em>światło</em><span class="r">zamknięte w szkle.</span></h1>
-        <div class="mf-sub reveal" style="--d:.8s"><span>Przewiń, żeby przeczytać całość</span><span>04 zasady · 07 lat · 1 obsesja</span></div>
+        <span class="label reveal" style="--d:.5s" data-i18n="mf.label"><b>Manifest</b> Prism, Rzeszów 2019–2026</span>
+        <h1 class="mf-title" data-split style="--d:.45s" data-i18n="mf.title">Nie sprzedajemy<br>telefonów. Sprzedajemy <em>światło</em><span class="r">zamknięte w szkle.</span></h1>
+        <div class="mf-sub reveal" style="--d:.8s"><span data-i18n="mf.sub1">Przewiń, żeby przeczytać całość</span><span data-i18n="mf.sub2">04 zasady · 07 lat · 1 obsesja</span></div>
       </div>
       <div class="panes" aria-hidden="true">
         <div class="pane pane-1 glass"></div>
@@ -100,8 +105,8 @@
 
     <section class="scrub-sec">
       <div class="container">
-        <span class="label"><b>01</b> Dlaczego</span>
-        <p class="scrub" data-scrub>Zaczęło się od jednego pytania: dlaczego kupowanie telefonu przypomina wypełnianie formularza? Tabele, kody, porównywarki. A przecież to przedmiot, którego dotykasz <em>dwa tysiące razy dziennie.</em> Postanowiliśmy sprzedawać go tak, jak poleca się dobrą książkę: z rozmową, rekomendacją i odrobiną <em>zachwytu.</em></p>
+        <span class="label" data-i18n="mf.whyLabel"><b>01</b> Dlaczego</span>
+        <p class="scrub" data-scrub data-i18n="mf.why">Zaczęło się od jednego pytania: dlaczego kupowanie telefonu przypomina wypełnianie formularza? Tabele, kody, porównywarki. A przecież to przedmiot, którego dotykasz <em>dwa tysiące razy dziennie.</em> Postanowiliśmy sprzedawać go tak, jak poleca się dobrą książkę: z rozmową, rekomendacją i odrobiną <em>zachwytu.</em></p>
       </div>
     </section>
 
@@ -109,14 +114,14 @@
       <div class="container">
         <div class="section-top">
           <div>
-            <span class="label reveal"><b>02</b> Zasady</span>
-            <h2 class="display" data-split>Cztery rzeczy,<br>których <em>nie odpuszczamy.</em></h2>
+            <span class="label reveal" data-i18n="mf.prLabel"><b>02</b> Zasady</span>
+            <h2 class="display" data-split data-i18n="mf.prTitle">Cztery rzeczy,<br>których <em>nie odpuszczamy.</em></h2>
           </div>
         </div>
-        <div class="principle reveal"><span class="pr-num">01</span><h3>Mniej, ale lepiej</h3><p>Sześć modeli zamiast sześciuset. Każdy nosimy przez miesiąc, zanim trafi na półkę. Jeśli nas zawiedzie, nie sprzedajemy go.</p></div>
-        <div class="principle reveal"><span class="pr-num">02</span><h3>Szczerość w cenie</h3><p>Cena, którą widzisz, to cena, którą płacisz. Raty bez ukrytych opłat, odkup wyceniany w dziesięć minut, przy Tobie.</p></div>
-        <div class="principle reveal"><span class="pr-num">03</span><h3>Człowiek po drugiej stronie</h3><p>Nie mamy automatu ani infolinii z menu. Odbiera Kasia, Tomek albo Ola, a każde z nich zna te telefony lepiej niż własną kieszeń.</p></div>
-        <div class="principle reveal"><span class="pr-num">04</span><h3>Szybkość jako szacunek</h3><p>Zamówienie złożone do 15:00 wyjeżdża tego samego dnia. Twój czas jest wart więcej niż nasze wymówki.</p></div>
+        <div class="principle reveal"><span class="pr-num">01</span><h3 data-i18n="mf.pr1">Mniej, ale lepiej</h3><p data-i18n="mf.pr1Text">Sześć modeli zamiast sześciuset. Każdy nosimy przez miesiąc, zanim trafi na półkę. Jeśli nas zawiedzie, nie sprzedajemy go.</p></div>
+        <div class="principle reveal"><span class="pr-num">02</span><h3 data-i18n="mf.pr2">Szczerość w cenie</h3><p data-i18n="mf.pr2Text">Cena, którą widzisz, to cena, którą płacisz. Raty bez ukrytych opłat, odkup wyceniany w dziesięć minut, przy Tobie.</p></div>
+        <div class="principle reveal"><span class="pr-num">03</span><h3 data-i18n="mf.pr3">Człowiek po drugiej stronie</h3><p data-i18n="mf.pr3Text">Nie mamy automatu ani infolinii z menu. Odbiera Kasia, Tomek albo Ola, a każde z nich zna te telefony lepiej niż własną kieszeń.</p></div>
+        <div class="principle reveal"><span class="pr-num">04</span><h3 data-i18n="mf.pr4">Szybkość jako szacunek</h3><p data-i18n="mf.pr4Text">Zamówienie złożone do 15:00 wyjeżdża tego samego dnia. Twój czas jest wart więcej niż nasze wymówki.</p></div>
       </div>
     </section>
 
@@ -124,41 +129,41 @@
       <div class="container">
         <div class="section-top">
           <div>
-            <span class="label reveal"><b>03</b> Droga</span>
-            <h2 class="display" data-split>Od garażu<br>do <em>pracowni.</em></h2>
+            <span class="label reveal" data-i18n="mf.tlLabel"><b>03</b> Droga</span>
+            <h2 class="display" data-split data-i18n="mf.tlTitle">Od garażu<br>do <em>pracowni.</em></h2>
           </div>
-          <p class="reveal">Siedem lat w sześciu kadrach. Przeciągnij oś w bok.</p>
+          <p class="reveal" data-i18n="mf.tlText">Siedem lat w sześciu kadrach. Przeciągnij oś w bok.</p>
         </div>
       </div>
       <div class="tl-track">
-        <article class="tl-card glass"><span class="yr">20<em>19</em></span><h3>Pierwszy telefon</h3><p>Sprzedany z garażu na Słocinie. Kupujący do dziś jest naszym klientem.</p></article>
-        <article class="tl-card glass"><span class="yr">20<em>20</em></span><h3>Sklep w sieci</h3><p>Lockdown zamknął drzwi, więc otworzyliśmy okno: pierwszą wersję strony.</p></article>
-        <article class="tl-card glass"><span class="yr">20<em>21</em></span><h3>Odkup</h3><p>Zaczynamy przyjmować stare telefony. Każdy trafia do drugiego życia albo do recyklingu.</p></article>
-        <article class="tl-card glass"><span class="yr">20<em>22</em></span><h3>Salon przy Szklanej</h3><p>Dwadzieścia metrów kwadratowych, ekspres do kawy i stół, na którym można wszystko dotknąć.</p></article>
-        <article class="tl-card glass"><span class="yr">20<em>24</em></span><h3>10 000 klientów</h3><p>Świętujemy tortem w kształcie telefonu. Był niedobry, ale wyglądał świetnie.</p></article>
-        <article class="tl-card glass"><span class="yr">20<em>26</em></span><h3>Ciekłe szkło</h3><p>Nowa odsłona Prism: sklep, który wygląda tak jak telefony, które sprzedaje.</p></article>
+        <article class="tl-card glass"><span class="yr">20<em>19</em></span><h3 data-i18n="mf.tl1">Pierwszy telefon</h3><p data-i18n="mf.tl1Text">Sprzedany z garażu na Słocinie. Kupujący do dziś jest naszym klientem.</p></article>
+        <article class="tl-card glass"><span class="yr">20<em>20</em></span><h3 data-i18n="mf.tl2">Sklep w sieci</h3><p data-i18n="mf.tl2Text">Lockdown zamknął drzwi, więc otworzyliśmy okno: pierwszą wersję strony.</p></article>
+        <article class="tl-card glass"><span class="yr">20<em>21</em></span><h3 data-i18n="mf.tl3">Odkup</h3><p data-i18n="mf.tl3Text">Zaczynamy przyjmować stare telefony. Każdy trafia do drugiego życia albo do recyklingu.</p></article>
+        <article class="tl-card glass"><span class="yr">20<em>22</em></span><h3 data-i18n="mf.tl4">Salon przy Szklanej</h3><p data-i18n="mf.tl4Text">Dwadzieścia metrów kwadratowych, ekspres do kawy i stół, na którym można wszystko dotknąć.</p></article>
+        <article class="tl-card glass"><span class="yr">20<em>24</em></span><h3 data-i18n="mf.tl5">10 000 klientów</h3><p data-i18n="mf.tl5Text">Świętujemy tortem w kształcie telefonu. Był niedobry, ale wyglądał świetnie.</p></article>
+        <article class="tl-card glass"><span class="yr">20<em>26</em></span><h3 data-i18n="mf.tl6">Ciekłe szkło</h3><p data-i18n="mf.tl6Text">Nowa odsłona Prism: sklep, który wygląda tak jak telefony, które sprzedaje.</p></article>
       </div>
     </section>
 
     <section>
       <div class="container stats">
-        <div class="stat reveal"><strong data-count="25000" data-suffix="+">0</strong><span>zadowolonych klientów</span></div>
-        <div class="stat reveal" style="--d:.08s"><strong data-count="24" data-suffix=" h">0</strong><span>od zamówienia do drzwi</span></div>
-        <div class="stat reveal" style="--d:.16s"><strong data-count="4.9" data-dec="1" data-suffix="/5">0</strong><span>średnia ocena sklepu</span></div>
-        <div class="stat reveal" style="--d:.24s"><strong data-count="6">0</strong><span>starannie wybranych modeli</span></div>
+        <div class="stat reveal"><strong data-count="25000" data-suffix="+">0</strong><span data-i18n="mf.st1">zadowolonych klientów</span></div>
+        <div class="stat reveal" style="--d:.08s"><strong data-count="24" data-suffix=" h">0</strong><span data-i18n="mf.st2">od zamówienia do drzwi</span></div>
+        <div class="stat reveal" style="--d:.16s"><strong data-count="4.9" data-dec="1" data-suffix="/5">0</strong><span data-i18n="mf.st3">średnia ocena sklepu</span></div>
+        <div class="stat reveal" style="--d:.24s"><strong data-count="6">0</strong><span data-i18n="mf.st4">starannie wybranych modeli</span></div>
       </div>
     </section>
 
     <div class="marquee glass " aria-hidden="true">
-      <div class="marquee-track"><span>Apple</span><i class="dot"></i><span><em>Samsung</em></span><i class="dot"></i><span>Google</span><i class="dot"></i><span><em>Xiaomi</em></span><i class="dot"></i><span>OnePlus</span><i class="dot"></i><span><em>Nothing</em></span><i class="dot"></i></div>
-      <div class="marquee-track"><span>Apple</span><i class="dot"></i><span><em>Samsung</em></span><i class="dot"></i><span>Google</span><i class="dot"></i><span><em>Xiaomi</em></span><i class="dot"></i><span>OnePlus</span><i class="dot"></i><span><em>Nothing</em></span><i class="dot"></i></div>
+      <div class="marquee-track"><span data-i18n="marquee.brands.0">Apple</span><i class="dot"></i><span data-i18n="marquee.brands.1"><em>Samsung</em></span><i class="dot"></i><span data-i18n="marquee.brands.2">Google</span><i class="dot"></i><span data-i18n="marquee.brands.3"><em>Xiaomi</em></span><i class="dot"></i><span data-i18n="marquee.brands.4">OnePlus</span><i class="dot"></i><span data-i18n="marquee.brands.5"><em>Nothing</em></span><i class="dot"></i></div>
+      <div class="marquee-track"><span data-i18n="marquee.brands.0">Apple</span><i class="dot"></i><span data-i18n="marquee.brands.1"><em>Samsung</em></span><i class="dot"></i><span data-i18n="marquee.brands.2">Google</span><i class="dot"></i><span data-i18n="marquee.brands.3"><em>Xiaomi</em></span><i class="dot"></i><span data-i18n="marquee.brands.4">OnePlus</span><i class="dot"></i><span data-i18n="marquee.brands.5"><em>Nothing</em></span><i class="dot"></i></div>
     </div>
 
     <section class="finale">
       <div class="container">
-        <span class="label no-line reveal">Do zobaczenia</span>
-        <h2 class="display" data-split>Wpadnij na kawę.<br>Telefony <em>poczekają.</em></h2>
-        <a class="btn btn-primary btn-lg glass reveal" href="kontakt.html">Jak do nas trafić <span class="arrow">→</span></a>
+        <span class="label no-line reveal" data-i18n="mf.endLabel">Do zobaczenia</span>
+        <h2 class="display" data-split data-i18n="mf.endTitle">Wpadnij na kawę.<br>Telefony <em>poczekają.</em></h2>
+        <a class="btn btn-primary btn-lg glass reveal" href="kontakt.html"><span data-i18n="mf.endCta">Jak do nas trafić</span> <span class="arrow">→</span></a>
       </div>
     </section>
 
@@ -176,7 +181,7 @@
             </svg>
             <span>Prism</span>
           </a>
-          <p>Mała pracownia z Rzeszowa. Sześć starannie wybranych telefonów, dostawa w 24 godziny i ludzie, którzy odbierają telefon.</p>
+          <p data-i18n="footer.about">Mała pracownia z Rzeszowa. Sześć starannie wybranych telefonów, dostawa w 24 godziny i ludzie, którzy odbierają telefon.</p>
           <div class="socials">
             <a href="#" class="glass" aria-label="Facebook">Fb</a>
             <a href="#" class="glass" aria-label="Instagram">Ig</a>
@@ -185,41 +190,41 @@
           </div>
         </div>
 
-        <nav class="footer-col" aria-label="Sklep">
-          <h4>Sklep</h4>
+        <nav class="footer-col" aria-label="Sklep" data-i18n-aria-label="footer.shop">
+          <h4 data-i18n="footer.shop">Sklep</h4>
           <ul>
-            <li><a href="sklep.html">Wszystkie modele</a></li>
+            <li><a href="sklep.html" data-i18n="footer.all">Wszystkie modele</a></li>
             <li><a href="sklep.html?q=apple">Apple</a></li>
             <li><a href="sklep.html?q=samsung">Samsung</a></li>
-            <li><a href="index.html#okazja">Wyprzedaż</a></li>
+            <li><a href="index.html#okazja" data-i18n="footer.sale">Wyprzedaż</a></li>
           </ul>
         </nav>
 
-        <nav class="footer-col" aria-label="Pomoc">
-          <h4>Pomoc</h4>
+        <nav class="footer-col" aria-label="Pomoc" data-i18n-aria-label="footer.help">
+          <h4 data-i18n="footer.help">Pomoc</h4>
           <ul>
-            <li><a href="kontakt.html#faq">Dostawa i płatności</a></li>
-            <li><a href="kontakt.html#faq">Zwroty</a></li>
-            <li><a href="manifest.html">O nas</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="kontakt.html#faq" data-i18n="footer.delivery">Dostawa i płatności</a></li>
+            <li><a href="kontakt.html#faq" data-i18n="footer.returns">Zwroty</a></li>
+            <li><a href="manifest.html" data-i18n="footer.about2">O nas</a></li>
+            <li><a href="kontakt.html" data-i18n="nav.contact">Kontakt</a></li>
           </ul>
         </nav>
 
         <div class="footer-col footer-news">
           <h4>Newsletter</h4>
-          <p>Raz w miesiącu, bez spamu. Na start <strong>50 zł</strong> rabatu.</p>
+          <p data-i18n="footer.newsText">Raz w miesiącu, bez spamu. Na start <strong>50 zł</strong> rabatu.</p>
           <form class="newsletter-form" id="newsletterForm" novalidate>
-            <input type="email" id="newsletterEmail" placeholder="Twój e-mail" required aria-label="Adres e-mail">
-            <button class="btn btn-primary glass" type="submit">Zapisz się</button>
+            <input type="email" id="newsletterEmail" placeholder="Twój e-mail" data-i18n-placeholder="footer.email" required aria-label="Adres e-mail" data-i18n-aria-label="footer.emailLabel">
+            <button class="btn btn-primary glass" type="submit" data-i18n="footer.subscribe">Zapisz się</button>
           </form>
-          <p class="newsletter-msg" id="newsletterMsg" hidden>Dziękujemy, sprawdź skrzynkę.</p>
+          <p class="newsletter-msg" id="newsletterMsg" hidden data-i18n="footer.thanks">Dziękujemy, sprawdź skrzynkę.</p>
         </div>
       </div>
 
       <p class="footer-word" aria-hidden="true">Prism</p>
 
       <div class="footer-bottom">
-        <p>© <span class="js-year">2026</span> Prism · projekt demonstracyjny liquid glass UI</p>
+        <p>© <span class="js-year">2026</span> Prism · <span data-i18n="footer.demo">projekt demonstracyjny liquid glass UI</span></p>
         <p>Rzeszów, PL · 50°02′N 21°59′E</p>
       </div>
     </div>
@@ -227,18 +232,18 @@
 
   <!-- ===== KOSZYK ===== -->
   <div class="scrim" id="scrim"></div>
-  <aside class="drawer glass" id="drawer" aria-hidden="true" aria-label="Koszyk">
+  <aside class="drawer glass" id="drawer" aria-hidden="true" aria-label="Koszyk" data-i18n-aria-label="nav.cart">
     <div class="drawer-head">
-      <h2>Koszyk<em id="drawerQty"></em></h2>
-      <button class="icon-btn" id="drawerClose" type="button" aria-label="Zamknij koszyk">
+      <h2><span data-i18n="cart.title">Koszyk</span><em id="drawerQty"></em></h2>
+      <button class="icon-btn" id="drawerClose" type="button" aria-label="Zamknij koszyk" data-i18n-aria-label="cart.close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
     <div class="drawer-items" id="drawerItems"></div>
     <div class="drawer-foot">
-      <div class="drawer-total"><span>Razem</span><strong id="drawerTotal">0 zł</strong></div>
-      <p class="drawer-note">Dostawa gratis · wysyłka w 24 h · 30 dni na zwrot</p>
-      <button class="btn btn-primary glass" id="checkoutBtn" type="button">Przejdź do kasy <span class="arrow">→</span></button>
+      <div class="drawer-total"><span data-i18n="cart.total">Razem</span><strong id="drawerTotal">0 zł</strong></div>
+      <p class="drawer-note" data-i18n="cart.note">Dostawa gratis · wysyłka w 24 h · 30 dni na zwrot</p>
+      <button class="btn btn-primary glass" id="checkoutBtn" type="button"><span data-i18n="cart.checkout">Przejdź do kasy</span> <span class="arrow">→</span></button>
     </div>
   </aside>
 

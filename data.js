@@ -140,3 +140,35 @@ window.PRISM_PRODUCTS = [
     ],
   },
 ];
+
+// Wersja angielska: tylko pola z tekstem (reszta jak w PL)
+window.PRISM_PRODUCTS_EN = {
+  "iphone-16-pro": {
+    tagline: "Titanium that catches the light from every angle.",
+    badge: "Bestseller",
+    colors: ["Desert Titanium", "Black Titanium", "White Titanium", "Natural Titanium"],
+  },
+  "galaxy-s25-ultra": {
+    tagline: "A stylus, 100× zoom and a screen like a window to the world.",
+    badge: "New",
+    colors: ["Titanium Gray", "Titanium Silver", "Titanium Navy"],
+  },
+  "pixel-9-pro": {
+    tagline: "Photos that look like memories.",
+    badge: "Sale",
+    colors: ["Porcelain", "Obsidian", "Hazel", "Rose Quartz"],
+  },
+  "xiaomi-15": {
+    tagline: "Compact, with Leica optics inside.",
+    colors: ["Black", "White", "Green"],
+  },
+  "oneplus-13": {
+    tagline: "Charges faster than your morning coffee.",
+    colors: ["Midnight Ocean", "Black Eclipse", "Arctic Dawn"],
+  },
+  "nothing-phone-3": {
+    tagline: "Transparent by nature. The Glyph speaks for it.",
+    badge: "Price hit",
+    colors: ["White", "Black"],
+  },
+};
